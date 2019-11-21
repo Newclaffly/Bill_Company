@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +31,7 @@
 <body>
 
 	<?php
+	
 	ini_set('display_errors', 1);
 	error_reporting(~0);
 
@@ -70,12 +74,16 @@
 
 	$sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
 	$query = mysqli_query($conn, $sql);
-
+	
+	$strUsername =  $_SESSION["username"];
+	$strPermission = $_SESSION["permis"];
+	// print_r($strUsername);
+	// print_r($strPermission);
 	?>
 
-
-	<h2>History</h2>
-
+	<!-- Debug Session -->
+	
+	<a href="add_data.php">Add</a>
 	<table>
 		<tr>
 			<th width="91">

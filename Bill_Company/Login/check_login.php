@@ -17,8 +17,11 @@
 	}
 	else
 	{
-			$_SESSION["id"] = $objResult["id"];
+			$_SESSION["username"] = $objResult["username"];
 			$_SESSION["permis"] = $objResult["permis"];
+			// echo '<pre>';
+			// print_r($_SESSION);
+			// echo '</pre>';
 
 			session_write_close();
 			

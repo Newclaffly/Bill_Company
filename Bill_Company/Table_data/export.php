@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +9,9 @@
 </head>
 <body>
 <?php  
+
+     $strUsername =  $_SESSION["username"];
+	$strPermission = $_SESSION["permis"];
  //export.php  
  if(!empty($_FILES["excel_file"]))  
  {  
@@ -21,7 +27,8 @@
                      <tr>  
                           <th>PO</th>  
                           <th>Header</th>  
-                          <th>Process</th>  
+                          <th>Process</th>
+                          <th>Owner</th>  
                      </tr>  
                      ";  
            $object = PHPExcel_IOFactory::load($_FILES["excel_file"]["tmp_name"]);  
@@ -30,18 +37,20 @@
                 $highestRow = $worksheet->getHighestRow();  
                 for($row=2; $row<=$highestRow; $row++)  
                 {  
-                     $PO = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());  
-                     $HEADER = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());  
-                     $PROCESS = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(3, $row)->getValue());  
+                     $PO = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(0, $row)->getValue());  
+                     $HEADER = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());  
+                    // $PROCESS = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());  
                     //  $postal_code = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());  
                     //  $country = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());  
-                     $query = "  INSERT INTO bill_data_message  (po, header, process)   VALUES ('".$PO."', '".$HEADER."', '".$PROCESS."')  ";  
+                    $PROCESS ="Inporcess";
+                     $query = "  INSERT INTO bill_data_message  (po, header, process,username)   VALUES ('".$PO."', '".$HEADER."', '".$PROCESS."', '".$strUsername."')  ";  
                      mysqli_query($connect, $query);  
                      $output .= '  
                      <tr>  
                           <td>'.$PO.'</td>  
                           <td>'.$HEADER.'</td>  
-                          <td>'.$PROCESS.'</td>  
+                          <td>'.$PROCESS.'</td> 
+                          <td>'.$strUsername.'</td> 
                      </tr>  
                      ';  
                 }  

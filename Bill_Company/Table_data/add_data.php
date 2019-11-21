@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -49,6 +52,12 @@
 </head>
 
 <body>
+  <?php
+  $strUsername =  $_SESSION["username"];
+  $strPermission = $_SESSION["permis"];
+  // print_r($strUsername);
+  // print_r($strPermission);
+  ?>
   <div class="container box">
     <h3 align="center">Import Database using Ajax</h3>
     <br /><br />
