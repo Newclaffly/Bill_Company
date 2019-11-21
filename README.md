@@ -11,15 +11,15 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Install PHP v5.6
+Installing PHP v5.6
 ```
 
 ```
-Install MySQL Server 8.0
+Installing MySQL Server 8.0
 ```
 
 ```
-Install Visual Studio Code
+Installing Visual Studio Code
 ```
 
 ### Installing
