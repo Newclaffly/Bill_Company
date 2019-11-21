@@ -81,54 +81,52 @@ session_start();
 
 
 	?>
-
-	<!-- Debug Session -->
-
 	<a href="add_data.php">Add</a>
-	<table>
-		<tr>
-			<th width="91">
-				<div align="center">ลำดับ </div>
-			</th>
-			<th width="98">
-				<div align="center">วันที่ / เวลา </div>
-			</th>
-			<th width="198">
-				<div align="center">หน่วยงาน</div>
-			</th>
-			<th width="30">
-				<div align="center">สถานะ </div>
-			</th>
-			<th width="59">
-				<div align="center">เจ้าของ</div>
-			</th>
-			<th width="59">
-				<div align="center">เครื่องมือ </div>
-			</th>
-
-		</tr>
-
-		<?php
-		while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-			?>
+	<h1 align="center">History</h1>
+	<table id="example" class="display" cellspacing="0" width="100%">
+		<thead>
 			<tr>
-				<td>
-					<div align="center"><?php echo $result["id"]; ?></div>
-				</td>
-				<td><?php echo $result["po"]; ?></td>
-				<td><?php echo $result["header"]; ?></td>
-				<td>
-					<div align="center"><?php echo $result["process"]; ?></div>
-				</td>
-				<td>
-					<div align="center"><?php echo $result["username"]; ?></div>
-				</td>
-				<td></td>
-
+				<th width="91">
+					<div align="center">ลำดับ </div>
+				</th>
+				<th width="98">
+					<div align="center">วันที่ / เวลา </div>
+				</th>
+				<th width="198">
+					<div align="center">หน่วยงาน</div>
+				</th>
+				<th width="30">
+					<div align="center">สถานะ </div>
+				</th>
+				<th width="59">
+					<div align="center">เจ้าของ</div>
+				</th>
+				<th width="59">
+					<div align="center">เครื่องมือ </div>
+				</th>
 			</tr>
-		<?php
-		}
-		?>
+
+			<?php
+			while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+				?>
+				<tr>
+					<td>
+						<div align="center"><?php echo $result["id"]; ?></div>
+					</td>
+					<td><?php echo $result["po"]; ?></td>
+					<td><?php echo $result["header"]; ?></td>
+					<td>
+						<div align="center"><?php echo $result["process"]; ?></div>
+					</td>
+					<td>
+						<div align="center"><?php echo $result["username"]; ?></div>
+					</td>
+					<td align="center"><a href="edit.php?id=<?php echo $result["id"];?>">Edit</a></td>
+				</tr>
+			<?php
+			}
+			?>
+			<thead>
 	</table>
 	<br>
 	Total <?php echo $num_rows; ?> Record : <?php echo $num_pages; ?> Page :

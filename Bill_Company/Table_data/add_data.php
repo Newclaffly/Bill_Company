@@ -59,12 +59,13 @@ session_start();
   // print_r($strPermission);
   ?>
   <div class="container box">
+  <a href="history.php">Back</a>
     <h3 align="center">Import Database using Ajax</h3>
     <br /><br />
     <br /><br />
     <form mehtod="post" id="export_excel">
       <label>Select Excel</label>
-      <input type="file" name="excel_file" id="excel_file" />
+      <input type="file" name="excel_file" id="excel_file" onclick="return confirm('คุณแน่ใจที่ต้องการอัปโหลดข้อมูลหรือไม่ ?')" />
     </form>
     <br />
     <br />

@@ -1,10 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Title of the document</title>
+<title>ThaiCreate.Com PHP & MySQL (mysqli)</title>
 </head>
-
 <body>
 <?php
 	ini_set('display_errors', 1);
@@ -17,18 +14,20 @@
 
 	$conn = mysqli_connect($serverName,$userName,$userPassword,$dbName);
 
-	$sql = "INSERT INTO bill_data_message (po,header,process,date_upload) VALUES ('".$_POST["txtpo"]."','".$_POST["txtheader"]."','".$_POST["txtprocess"]."','".$_POST["txtdate"]."')";
+	$sql = "UPDATE bill_data_message SET 
+			po = '".$_POST["txtpo"]."' ,
+			header = '".$_POST["txtheader"]."' ,
+			process = '".$_POST["txtprocess"]."' ,
+			username = '".$_POST["txtusername"]."' 
+			WHERE id = '".$_POST["txtid"]."' ";
 
 	$query = mysqli_query($conn,$sql);
 
 	if($query) {
-		echo "Record add successfully";
-	}else{
-        echo "Not Record". "<br>" . $conn->error;
-    }
+	 echo "Record update successfully";
+	}
 
 	mysqli_close($conn);
 ?>
 </body>
-
-</html> 
+</html>
