@@ -32,19 +32,37 @@ $conn->close();
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+
+    .box {
+      width: 900px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 100px;
+    }
+  </style>
 </head>
 <body>
-
+<div class="container box">
 <form name="frmlogin" method="post" action="check_login.php">
-  <fieldset>
-    <legend>Personal informationlegend:</legend>
+
+    <h3 align="center">Import Database using Ajax</h3>
    	Username:<br>
     <input type="text" name="txtusername" id="txtusername" placeholder="Username"><br>
     Password:<br>
     <input type="text" name="txtpassword" id="txtpassword" placeholder="Password"><br><br>
     <button type="submit">Submit</button>
-  </fieldset>
+ 
 </form> 
+</div>
 
 
 </body>
