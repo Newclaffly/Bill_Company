@@ -1,39 +1,12 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "bill_format";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT * FROM bill_data";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-       // echo "id: " . $row["id"]. " -  	po: " . $row["po"]. " " . $row["process"]. "<br>";
-       echo "Data member : ";
-       echo "id: ".$row["id"]." " . $row["po"]. " Username :". $row["username"]." " . $row["password"]." ". $row["permis"]." ". $row["process"]. " " .$row["price"]. " created: " .$row["created_at"]. "<br>";
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<title>Login</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <title>Login From</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
     body {
       margin: 0;
