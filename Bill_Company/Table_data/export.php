@@ -9,7 +9,6 @@ session_start();
 </head>
 <body>
 <?php  
-
      $strUsername =  $_SESSION["username"];
 	$strPermission = $_SESSION["permis"];
  //export.php  
@@ -63,7 +62,6 @@ session_start();
            echo '<label class="text-danger">Invalid File</label>';  
       }  
  }
-
  ?> 
 </body>
 </html>

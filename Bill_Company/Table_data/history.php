@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,11 @@ session_start();
 <body>
 
 	<?php
-	
+	date_default_timezone_set('Asia/Bangkok');
+	$strUsername =  $_SESSION["username"];
+	$strPermission = $_SESSION["permis"];
+	// print_r($strUsername);
+	// print_r($strPermission);
 	ini_set('display_errors', 1);
 	error_reporting(~0);
 
@@ -42,7 +46,7 @@ session_start();
 
 	$conn = mysqli_connect($serverName, $userName, $userPassword, $dbName);
 
-	$sql = "SELECT * FROM bill_data";
+	$sql = "SELECT * FROM bill_data_message WHERE username = '$strUsername'";
 	$query = mysqli_query($conn, $sql);
 
 	$num_rows = mysqli_num_rows($query);
@@ -74,15 +78,12 @@ session_start();
 
 	$sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
 	$query = mysqli_query($conn, $sql);
-	
-	$strUsername =  $_SESSION["username"];
-	$strPermission = $_SESSION["permis"];
-	// print_r($strUsername);
-	// print_r($strPermission);
+
+
 	?>
 
 	<!-- Debug Session -->
-	
+
 	<a href="add_data.php">Add</a>
 	<table>
 		<tr>
@@ -95,12 +96,16 @@ session_start();
 			<th width="198">
 				<div align="center">หน่วยงาน</div>
 			</th>
-			<th width="97">
+			<th width="30">
 				<div align="center">สถานะ </div>
+			</th>
+			<th width="59">
+				<div align="center">เจ้าของ</div>
 			</th>
 			<th width="59">
 				<div align="center">เครื่องมือ </div>
 			</th>
+
 		</tr>
 
 		<?php
@@ -110,10 +115,13 @@ session_start();
 				<td>
 					<div align="center"><?php echo $result["id"]; ?></div>
 				</td>
-				<td><?php echo $result["created_at"]; ?></td>
-				<td><?php echo $result["username"]; ?></td>
+				<td><?php echo $result["po"]; ?></td>
+				<td><?php echo $result["header"]; ?></td>
 				<td>
 					<div align="center"><?php echo $result["process"]; ?></div>
+				</td>
+				<td>
+					<div align="center"><?php echo $result["username"]; ?></div>
 				</td>
 				<td></td>
 
