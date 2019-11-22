@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
+  <script src="../js/bootstrap.js"></script>
   <title>Edit</title>
 </head>
 
@@ -36,44 +36,49 @@
   $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
   $date = date("Y-m-d");
   ?>
-  <form action="save_read.php" name="frmAdd" method="post">
-    <input type="hidden" name="txtid" value="<?php echo $result["id"]; ?>">
-    <input type="hidden" name="txtpo" size="20" value="<?php echo $result["po"]; ?>">
-    <input type="hidden" name="txtheader" size="20" value="<?php echo $result["header"]; ?>">
-    <input type="hidden" name="txtprocess" size="2" value="Success">
-    <input type="hidden" name="txtusername" size="5" value="<?php echo $result["username"]; ?>">
-    <input type="hidden" name="txtdate" size="5" value="<?php $date ?>">
-    <table width="284" border="1">
-      <tr>
+  <a class="btn btn-link" href="history_member.php">กลับ</a>
+  <div class="container">
+    <form action="save_read.php" name="frmAdd" method="post">
 
-        <th width="120">ID</th>
-        <td><input type="text" name="txtid" size="20" value="<?php echo $result["id"]; ?>" disabled></td>
-      </tr>
-      <tr>
-        <th width="120">Po</th>
+      <input type="hidden" name="txtid" value="<?php echo $result["id"]; ?>">
+      <input type="hidden" name="txtpo" size="20" value="<?php echo $result["po"]; ?>">
+      <input type="hidden" name="txtheader" size="20" value="<?php echo $result["header"]; ?>">
+      <input type="hidden" name="txtprocess" size="2" value="Success">
+      <input type="hidden" name="txtusername" size="5" value="<?php echo $result["username"]; ?>">
+      <input type="hidden" name="txtdate" size="5" value="<?php $date ?>">
 
-        <td><input type="text" name="txtpo" size="20" value="<?php echo $result["po"]; ?>" disabled></td>
-      </tr>
-      <tr>
-        <th width="120">Header</th>
-
-        <td><input type="text" name="txtheader" size="20" value="<?php echo $result["header"]; ?>" disabled></td>
-      </tr>
-      <tr>
-        <th width="120">Process</th>
-
-        <td><input type="text" name="txtprocess" size="2" value="<?php echo $result["process"]; ?>" disabled></td>
-      </tr>
-      <tr>
-        <th width="120">Username</th>
-        <td><input type="text" name="txtusername" size="5" value="<?php echo $result["username"]; ?>" disabled></td>
-      </tr>
-    </table>
-    <input type="submit" name="submit" value="ยืนยันการเปิดอ่าน">
-  </form>
-  <?php
-  mysqli_close($conn);
-  ?>
+      <h1 align="center">หน้าจอแก้ใขข้อมูล</h1>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+              <th>ID</th>
+              <td><input type="text" class="form-control" name="txtid" size="20" value="<?php echo $result["id"]; ?>" disabled>
+            </td> 
+          </tr>
+          <tr>
+              <th>Po</th>
+              <td><input type="text" class="form-control" name="txtpo" size="20" value="<?php echo $result["po"]; ?>" disabled></td>    
+          </tr>
+          <tr>
+              <th>Header</th>
+              <td><input type="text" class="form-control" name="txtheader" size="20" value="<?php echo $result["header"]; ?>" disabled></td>
+          </tr>
+          <tr>
+              <th>Process</th>
+              <td><input type="text" class="form-control" name="txtprocess" size="2" value="<?php echo $result["process"]; ?>" disabled></td>
+          </tr>
+          <tr>
+              <th>Username</th>
+              <td><input type="text" n class="form-control" ame="txtusername" size="5" value="<?php echo $result["username"]; ?>" disabled></td>
+          </tr>
+        </thead>
+      </table>
+      <button type="submit" class="btn btn-success " name="submit">ยืนยันการเปิดอ่าน</button>
+    </form>
+    <?php
+    mysqli_close($conn);
+    ?>
+  </div>
 </body>
 
 </html>

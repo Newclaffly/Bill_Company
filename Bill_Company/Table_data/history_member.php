@@ -12,24 +12,6 @@ session_start();
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
 	<title>Title of the document</title>
-	<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td,
-		th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-		}
-
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
 </head>
 
 <body>
@@ -85,75 +67,75 @@ session_start();
 
 	?>
 	<!-- <a href="add_data.php">Add</a> -->
-	<a href="logout.php" onclick="return confirm('ยันยันการออกจากระบบหรือไม่ ?')">Logout</a>
-
-	<h1 align="center">History</h1>
-	<table id="example" class="display" cellspacing="0" width="100%">
-		<thead>
-			<tr>
-				<th width="91">
-					<div align="center">ลำดับ </div>
-				</th>
-				<th width="98">
-					<div align="center">วันที่ / เวลา </div>
-				</th>
-				<th width="198">
-					<div align="center">หน่วยงาน</div>
-				</th>
-				<th width="30">
-					<div align="center">สถานะ </div>
-				</th>
-				<th width="59">
-					<div align="center">เจ้าของ</div>
-				</th>
-				<th width="59">
-					<div align="center">เครื่องมือ </div>
-				</th>
-			</tr>
-
-			<?php
-			while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-				?>
+	<div class="container">
+		<h1 align="center">รายการบันทึก</h1>
+		<a class="btn btn-danger" href="logout.php" onclick="return confirm('ยันยันการออกจากระบบหรือไม่ ?')">Logout</a>
+		<table id="example" class="table table-bordered" cellspacing="0" width="100%">
+			<thead class="thead-light">
 				<tr>
-					<td>
-						<div align="center"><?php echo $result["id"]; ?></div>
-					</td>
-					<td><?php echo $result["po"]; ?></td>
-					<td><?php echo $result["header"]; ?></td>
-					<td>
-						<div align="center"><?php echo $result["process"]; ?></div>
-					</td>
-					<td>
-						<div align="center"><?php echo $result["username"]; ?></div>
-					</td>
-					<td align="center"><a href="read.php?id=<?php echo $result["id"]; ?>">เปิดอ่าน</a></td>
+					<th>
+						<div align="center">ลำดับ </div>
+					</th>
+					<th>
+						<div align="center">วันที่ / เวลา </div>
+					</th>
+					<th>
+						<div align="center">หน่วยงาน</div>
+					</th>
+					<th>
+						<div align="center">สถานะ </div>
+					</th>
+					<th>
+						<div align="center">เจ้าของ</div>
+					</th>
+					<th>
+						<div align="center">เครื่องมือ </div>
+					</th>
 				</tr>
-			<?php
-			}
-			?>
-			<thead>
-	</table>
-	<br>
-	จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
 
-	<?php
-	if ($prev_page) {
-		echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
-	}
+				<?php
+				while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+					?>
+					<tr>
+						<td>
+							<div align="center"><?php echo $result["id"]; ?></div>
+						</td>
+						<td><?php echo $result["po"]; ?></td>
+						<td><?php echo $result["header"]; ?></td>
+						<td>
+							<div align="center"><?php echo $result["process"]; ?></div>
+						</td>
+						<td>
+							<div align="center"><?php echo $result["username"]; ?></div>
+						</td>
+						<td align="center"><a class="btn btn-success" href="read.php?id=<?php echo $result["id"]; ?>">เปิดอ่าน</a></td>
+					</tr>
+				<?php
+				}
+				?>
+			</thead>
+		</table>
+		<br>
+		จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
 
-	for ($i = 1; $i <= $num_pages; $i++) {
-		if ($i != $page) {
-			echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
-		} else {
-			echo "<b> $i </b>";
+		<?php
+		if ($prev_page) {
+			echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
 		}
-	}
-	if ($page != $num_pages) {
-		echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
-	}
-	$conn = null;
-	?>
 
+		for ($i = 1; $i <= $num_pages; $i++) {
+			if ($i != $page) {
+				echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
+			} else {
+				echo "<b> $i </b>";
+			}
+		}
+		if ($page != $num_pages) {
+			echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
+		}
+		$conn = null;
+		?>
+	</div>
 </body>
 
 </html>
