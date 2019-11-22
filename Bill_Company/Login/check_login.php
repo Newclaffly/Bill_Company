@@ -31,7 +31,7 @@
 			}
 			else
 			{
-				header("location:../Table_data/history.php");
+				header("location:../Table_data/history_member.php");
 			}
 	}
 	mysqli_close($objCon);

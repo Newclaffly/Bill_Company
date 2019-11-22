@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>ThaiCreate.Com PHP & MySQL (mysqli)</title>
+<title>Save Edit</title>
 </head>
 <body>
 <?php
