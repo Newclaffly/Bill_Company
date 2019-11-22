@@ -27,11 +27,11 @@
 			
 			if($objResult["permis"] == "Admin")
 			{
-				header("location:../Table_data/history.php");
+				header("location:../Table_data/history_member.php");
 			}
 			else
 			{
-				header("location:../Table_data/history_member.php");
+				header("location:../Table_data/history.php");
 			}
 	}
 	mysqli_close($objCon);

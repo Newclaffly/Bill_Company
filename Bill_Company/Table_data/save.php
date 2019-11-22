@@ -1,6 +1,8 @@
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Save Edit</title>
+<meta http-equiv=refresh content=1;URL=../Table_data/history.php> 
 </head>
 <body>
 <?php
@@ -29,5 +31,15 @@
 
 	mysqli_close($conn);
 ?>
+<div align="center">
+		<p><br>
+			<br>
+			<font size="3" face="MS Sans Serif, Tahoma, sans-serif"><b>บันทึกการแก้ไขข้อมูลเรียบร้อยสำเร็จ</b></font>
+		</p>
+		<p>
+			<font size="3" face="MS Sans Serif, Tahoma, sans-serif">กรุณารอสักครู่ เพื่อกลับหน้าบันทึกรายการ</font><br>
+			<br>
+		</p>
+	</div>
 </body>
 </html>

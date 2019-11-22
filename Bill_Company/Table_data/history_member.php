@@ -46,7 +46,7 @@ session_start();
 
 	$conn = mysqli_connect($serverName, $userName, $userPassword, $dbName);
 
-	$sql = "SELECT * FROM bill_data_message WHERE username = '$strUsername'";
+	$sql = "SELECT * FROM bill_data_message";
 	$query = mysqli_query($conn, $sql);
 
 	$num_rows = mysqli_num_rows($query);
@@ -81,7 +81,7 @@ session_start();
 
 
 	?>
-	<a href="add_data.php">Add</a>
+	<!-- <a href="add_data.php">Add</a> -->
 	<a href="logout.php" onclick="return confirm('ยันยันการออกจากระบบหรือไม่ ?')" >Logout</a>
 	
 	<h1 align="center">History</h1>
