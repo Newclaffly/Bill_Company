@@ -82,6 +82,8 @@ session_start();
 
 	?>
 	<a href="add_data.php">Add</a>
+	<a href="logout.php" onclick="return confirm('ยันยันการออกจากระบบหรือไม่ ?')" >Logout</a>
+	
 	<h1 align="center">History</h1>
 	<table id="example" class="display" cellspacing="0" width="100%">
 		<thead>
@@ -129,7 +131,7 @@ session_start();
 			<thead>
 	</table>
 	<br>
-	Total <?php echo $num_rows; ?> Record : <?php echo $num_pages; ?> Page :
+	จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
 
 	<?php
 	if ($prev_page) {
