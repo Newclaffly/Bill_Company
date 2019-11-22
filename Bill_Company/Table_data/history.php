@@ -7,6 +7,10 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 	<title>Title of the document</title>
 	<style>
 		table {
@@ -29,7 +33,6 @@ session_start();
 </head>
 
 <body>
-
 	<?php
 	date_default_timezone_set('Asia/Bangkok');
 	$strUsername =  $_SESSION["username"];
@@ -82,8 +85,8 @@ session_start();
 
 	?>
 	<a href="add_data.php">Add</a>
-	<a href="logout.php" onclick="return confirm('ยันยันการออกจากระบบหรือไม่ ?')" >Logout</a>
-	
+	<a href="logout.php" onclick="return confirm('ยันยันการออกจากระบบหรือไม่ ?')">Logout</a>
+
 	<h1 align="center">History</h1>
 	<table id="example" class="display" cellspacing="0" width="100%">
 		<thead>
@@ -123,7 +126,7 @@ session_start();
 					<td>
 						<div align="center"><?php echo $result["username"]; ?></div>
 					</td>
-					<td align="center"><a href="edit.php?id=<?php echo $result["id"];?>">Edit</a></td>
+					<td align="center"><a href="edit.php?id=<?php echo $result["id"]; ?>">Edit</a></td>
 				</tr>
 			<?php
 			}

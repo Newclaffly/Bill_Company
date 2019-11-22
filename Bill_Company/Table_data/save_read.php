@@ -4,10 +4,14 @@ session_start();
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<title>Save_read</title>
-	<meta http-equiv=refresh content=1;URL=../Table_data/history_member.php> </head> 
-	<body>
+	<meta http-equiv=refresh content=1;URL=../Table_data/history_member.php> </head> <body>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 	<?php
 	ini_set('display_errors', 1);
 	error_reporting(~0);

@@ -7,10 +7,15 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
   <title>Uploading excel Formating</title>
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+  <!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+
   <script>
     $(document).ready(function() {
       $('#excel_file').change(function() {
@@ -59,7 +64,7 @@ session_start();
   // print_r($strPermission);
   ?>
   <div class="container box">
-  <a href="history.php">Back</a>
+    <a href="history.php">Back</a>
     <h3 align="center">Import Database using Ajax</h3>
     <br /><br />
     <br /><br />
