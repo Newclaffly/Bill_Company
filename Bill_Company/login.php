@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@ session_start();
     $username = $_POST['username'];
     $password = $conn->real_escape_string($_POST['password']);
 
-    $sql = "SELECT * FROM `bill_data` WHERE `username` = '" . $username . "' AND `password` = '" . $password . "' ";
+    $sql = "SELECT * FROM `bill_member` WHERE `username` = '" . $username . "' AND `password` = '" . $password . "' ";
     $result = $conn->query($sql);
 
     //echo print_r($result);

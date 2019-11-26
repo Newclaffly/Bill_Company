@@ -1,8 +1,9 @@
 <?php
 	session_start();
+	error_reporting(0);
 	$serverName = "localhost";
 	$userName = "root";
-	$userPassword = "password";
+	$userPassword = "";
 	$dbName = "bill_format";
 
 	$objCon = mysqli_connect($serverName,$userName,$userPassword,$dbName);

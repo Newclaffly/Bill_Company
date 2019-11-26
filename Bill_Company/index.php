@@ -13,6 +13,8 @@
 <body>
 <?php
 echo 'Current PHP version: ' . phpversion();
+error_reporting(0);
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">

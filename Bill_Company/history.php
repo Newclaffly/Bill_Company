@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,7 +74,7 @@
 		$strUsername =  $_SESSION["username"];
 		$strPermission = $_SESSION["permis"];
 		ini_set('display_errors', 1);
-		error_reporting(~0);
+		error_reporting(0);
 		include_once('connect.php');
 
 		$sql = "SELECT * FROM bill_data_message WHERE username = '$strUsername'";
