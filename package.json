@@ -1,0 +1,25 @@
+{
+  "name": "project_d",
+  "version": "1.0.0",
+  "description": "One Paragraph of project description goes here",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Newclaffly/Bill_Company.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Newclaffly/Bill_Company/issues"
+  },
+  "homepage": "https://github.com/Newclaffly/Bill_Company#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "datatables.net-dt": "^1.10.20",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
+  }
+}
