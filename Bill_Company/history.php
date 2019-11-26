@@ -8,7 +8,6 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>History</title>
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/datatables/datatables.min.css">
 </head>
 
 <body>
@@ -20,8 +19,7 @@
 			</button>
 			<?php
 			session_start();
-			if ($_SESSION['permis'] == "Admin") {
-				// header('location:history.php')
+			if ($_SESSION['permis'] == "Supplier") {
 				?>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
@@ -67,7 +65,7 @@
 				</div>
 		</div>
 	</nav>
-	
+
 	<div class="container">
 		<?php
 		date_default_timezone_set('Asia/Bangkok');
@@ -82,7 +80,7 @@
 
 		$num_rows = mysqli_num_rows($query);
 
-		$per_page = 20;   // Per Page
+		$per_page = 10;   // Per Page
 		$page  = 1;
 
 		if (isset($_GET["Page"])) {
@@ -114,8 +112,12 @@
 		?>
 
 		<div class="container">
-			<h1 align="center">รายการบันทึก</h1>
-			<a class="btn btn-primary" href="add_data.php">เพิ่มข้อมูล</a>
+			<div class="mx-auto mt-5">
+				<h1 align="center">รายการบันทึก</h1>
+			</div>
+			<div class="form-group float-right">
+				<a href="add_data.php" class="btn btn-outline-primary float-right">เพิ่มข้อมูล</a>
+			</div>
 			<table id="example" class="table table-bordered " cellspacing="0" width="100%">
 				<thead class="thead-light">
 					<tr>
@@ -154,7 +156,7 @@
 							<td>
 								<div align="center"><?php echo $result["username"]; ?></div>
 							</td>
-							<td align="center"><a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">Edit</a></td>
+							<td align="center"><a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">แก้ไข</a></td>
 						</tr>
 					<?php
 					}
@@ -162,41 +164,33 @@
 					<thead>
 			</table>
 
-			<br>
-			จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
-
-			<?php
-			if ($prev_page) {
-				echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
-			}
-
-			for ($i = 1; $i <= $num_pages; $i++) {
-				if ($i != $page) {
-					echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
-				} else {
-					echo "<b> $i </b>";
+			<div class="form-grpup text-right">
+				จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
+				<?php
+				if ($prev_page) {
+					echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
 				}
-			}
-			if ($page != $num_pages) {
-				echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
-			}
-			$conn = null;
-			?>
-		</div>
-	</div>
 
-	<!--create modal dialog for display detail info for edit on button cell click-->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<div id="content-data"></div>
+				for ($i = 1; $i <= $num_pages; $i++) {
+					if ($i != $page) {
+						echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
+					} else {
+						echo "<b> $i </b>";
+					}
+				}
+				if ($page != $num_pages) {
+					echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
+				}
+				$conn = null;
+				?>
+				<br><br><br>
+			</div>
 		</div>
-	</div>
 	</div>
 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-	<script type="text/javascript" src="node_modules/datatables/datatables.min.js"></script>
 	<script>
 		$(document).on('click', '#getEdit', function(e) {
 			e.preventDefault();

@@ -34,7 +34,7 @@ session_start();
       $_SESSION['username'] = $row['username'];
       $_SESSION['permis'] = $row['permis'];
       // echo  $_SESSION['permis'];
-      if ($_SESSION['permis'] == "Admin") {
+      if ($_SESSION['permis'] == "Supplier") {
         header('location:history.php');
       } else {
         header('location:history_member.php');

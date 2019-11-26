@@ -19,8 +19,7 @@
 			</button>
 			<?php
 			session_start();
-			if ($_SESSION['permis'] == "Admin") {
-				// header('location:history.php')
+			if ($_SESSION['permis'] == "Supplier") {
 				?>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
@@ -88,7 +87,7 @@
 
 	$num_rows = mysqli_num_rows($query);
 
-	$per_page = 20;   // Per Page
+	$per_page = 10;   // Per Page
 	$page  = 1;
 
 	if (isset($_GET["Page"])) {
@@ -120,8 +119,10 @@
 	?>
 	<!-- <a href="add_data.php">Add</a> -->
 	<div class="container">
-		<h1 align="center">รายการบันทึก</h1>
-		<table id="example" class="table table-bordered" cellspacing="0" width="100%">
+		<div class="mx-auto mt-5">
+			<h1 align="center">รายการบันทึก</h1>
+		</div>
+		<table id="example" class="table table-bordered mt-5" cellspacing="0" width="100%">
 			<thead class="thead-light">
 				<tr>
 					<th>
@@ -166,26 +167,27 @@
 				?>
 			</thead>
 		</table>
-		<br>
-		จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
-
-		<?php
-		if ($prev_page) {
-			echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
-		}
-
-		for ($i = 1; $i <= $num_pages; $i++) {
-			if ($i != $page) {
-				echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
-			} else {
-				echo "<b> $i </b>";
+		<div class="form-grpup text-right">
+			จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
+			<?php
+			if ($prev_page) {
+				echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
 			}
-		}
-		if ($page != $num_pages) {
-			echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
-		}
-		$conn = null;
-		?>
+
+			for ($i = 1; $i <= $num_pages; $i++) {
+				if ($i != $page) {
+					echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
+				} else {
+					echo "<b> $i </b>";
+				}
+			}
+			if ($page != $num_pages) {
+				echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
+			}
+			$conn = null;
+			?>
+			<br><br><br>
+		</div>
 	</div>
 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>

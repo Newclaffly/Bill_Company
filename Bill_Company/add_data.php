@@ -2,21 +2,96 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>เพิ่มข้อมูล</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/datatables/datatables.min.css">
-  <title>Uploading excel Formating</title>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-	<script type="text/javascript" src="node_modules/datatables/datatables.min.js"></script>
+</head>
 
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.php">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <?php
+      session_start();
+      if ($_SESSION['permis'] == "Supplier") {
+        ?>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="history.php">หน้าหลัก <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        <?php
+        } else {
+          ?>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="history_member.php">หน้าหลัก <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        <?php } ?>
+        <ul class="navbar-nav ml-auto">
+          <?php if (isset($_SESSION['id'])) { ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
+                                  $user = $_SESSION['username']; ?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+              </div>
+            </li>
+          <?php } else { ?>
+            <li class="nav-item">
+              <a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">Login</a>
+            </li>
+          <?php } ?>
+        </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="form-group mt-5">
+      <h3 align="center">Import Database using Ajax</h3>
+    </div>
+    <form mehtod="post" id="export_excel">
+      <div class="form-group">
+        <label for="exampleFormControlFile1">กรุณาเลือกไฟล์ที่ต้องการอัปโหลด</label>
+        <input type="file" class="form-control-file" name="excel_file" id="excel_file" onclick="return confirm('คุณแน่ใจที่ต้องการอัปโหลดข้อมูลหรือไม่ ?')" />
+      </div>
+    </form>
+    <div id="result">
+    </div>
+    <div class="form-group float-right">
+      <?php
+      if ($_SESSION['permis'] == "Supplier") {
+        ?>
+        <a href="history.php" class="btn btn-info float-right">กลับหน้ารายการบันทึก</a>
+      <?php } else { ?>
+        <a href="history_member.php" class="btn btn-info float-right">กลับหน้ารายการบันทึก</a>
+      <?php } ?>
+    </div>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script>
     $(document).ready(function() {
       $('#excel_file').change(function() {
@@ -39,45 +114,7 @@ session_start();
       });
     });
   </script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f1f1f1;
-    }
 
-    .box {
-      width: 900px;
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-top: 100px;
-    }
-  </style>
-</head>
-
-<body>
-  <?php
-  $strUsername =  $_SESSION["username"];
-  $strPermission = $_SESSION["permis"];
-  // print_r($strUsername);
-  // print_r($strPermission);
-  ?>
-  <div class="container box">
-    <a href="history.php">Back</a>
-    <h3 align="center">Import Database using Ajax</h3>
-    <br /><br />
-    <br /><br />
-    <form mehtod="post" id="export_excel">
-      <label>Select Excel</label>
-      <input type="file" name="excel_file" id="excel_file" onclick="return confirm('คุณแน่ใจที่ต้องการอัปโหลดข้อมูลหรือไม่ ?')" />
-    </form>
-    <br />
-    <br />
-    <div id="result">
-    </div>
-  </div>
 </body>
 
 </html>

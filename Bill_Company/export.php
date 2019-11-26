@@ -21,7 +21,7 @@ session_start();
            include("Classes/PHPExcel/IOFactory.php");  
            $output = '';  
            $output .= "  
-           <label class='text-success'>Data Inserted</label>  
+           <label class='text-success'>เพิ่มข้อมูลสำเร็จแล้ว</label>  
                 <table class='table table-bordered'>  
                      <tr>  
                           <th>PO</th>  
