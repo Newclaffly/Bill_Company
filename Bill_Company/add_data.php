@@ -66,20 +66,18 @@ error_reporting(0);
           <?php } ?>
         </ul>
         </div>
-    </div>
   </nav>
   <div class="container">
     <div class="form-group mt-5">
       <h3 align="center">Import Database using Ajax</h3>
     </div>
-    <form mehtod="post" id="export_excel">
+    <form method="post" enctype="multipart/form-data" action="export.php">
       <div class="form-group">
-        <label for="exampleFormControlFile1">กรุณาเลือกไฟล์ที่ต้องการอัปโหลด</label>
-        <input type="file" class="form-control-file" name="excel_file" id="excel_file" onclick="return confirm('คุณแน่ใจที่ต้องการอัปโหลดข้อมูลหรือไม่ ?')" />
+        <label for="exampleInputFile">กรุณาเลือกไฟล์ที่ต้องการอัปโหลด</label>
+        <input type="file" class="form-control-file" name="file" id="exampleInputFile" onclick="return confirm('คุณแน่ใจที่ต้องการอัปโหลดข้อมูลหรือไม่ ?')" />
       </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <div id="result">
-    </div>
     <div class="form-group float-right">
       <?php
       if ($_SESSION['permis'] == "Supplier") {
@@ -93,28 +91,7 @@ error_reporting(0);
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#excel_file').change(function() {
-        $('#export_excel').submit();
-      });
-      $('#export_excel').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-          url: "export.php",
-          cache: false,
-          method: "POST",
-          data: new FormData(this),
-          contentType: false,
-          processData: false,
-          success: function(data) {
-            $('#result').html(data);
-            $('#excel_file').val();
-          }
-        });
-      });
-    });
-  </script>
+
 
 </body>
 
