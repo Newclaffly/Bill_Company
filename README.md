@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 Requirement Installring
 
 ```
-Installing PHP v5.6
+Installing PHP v7.1
 ```
 
 ```
@@ -19,6 +19,10 @@ Installing MySQL Server 8.0
 
 ```
 Installing Visual Studio Code
+```
+
+```
+Installing XAMPP
 ```
 
 ### Installing
