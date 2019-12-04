@@ -1,38 +1,26 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Save Edit</title>
-	<meta http-equiv=refresh content=1;URL=../Table_data/history.php> </head> <body>
-	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>บันทึกข้อมูลการแก้ไข</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<meta http-equiv='refresh' content='1; url=index.php '>
+</head>
+
+<body>
 	<?php
-	ini_set('display_errors', 1);
-	error_reporting(~0);
-
-	$serverName = "localhost";
-	$userName = "root";
-	$userPassword = "password";
-	$dbName = "bill_format";
-
-	$conn = mysqli_connect($serverName, $userName, $userPassword, $dbName);
-
+	include_once('connect.php');
 	$sql = "UPDATE bill_data_message SET 
 			po = '" . $_POST["txtpo"] . "' ,
 			header = '" . $_POST["txtheader"] . "' ,
 			process = '" . $_POST["txtprocess"] . "' ,
-			username = '" . $_POST["txtusername"] . "' 
+			owner = '" . $_POST["txtowner"] . "' 
 			WHERE id = '" . $_POST["txtid"] . "' ";
 
 	$query = mysqli_query($conn, $sql);
-
-	if ($query) {
-		echo "Record update successfully";
-	}
 
 	mysqli_close($conn);
 	?>
@@ -46,6 +34,10 @@
 			<br>
 		</p>
 	</div>
-	</body>
+
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+</body>
 
 </html>

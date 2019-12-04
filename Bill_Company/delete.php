@@ -68,7 +68,6 @@ error_reporting(0);
         </div>
     </div>
   </nav>
-
   <?php
   $strCustomerID = null;
   if (isset($_GET["id"])) {
@@ -81,9 +80,9 @@ error_reporting(0);
   ?>
   <div class="container">
     <div class="mx-auto mt-5">
-      <h1 align="center">แก้ไขข้อมูล</h1>
+      <h1 align="center">ลบข้อมูล</h1>
     </div>
-    <form action="save.php" name="frmAdd" method="post">
+    <form action="delete_save.php" name="frmAdd" method="post">
       <table class="table table-bordered">
         <tr>
           <th>ID</th>
@@ -108,7 +107,7 @@ error_reporting(0);
 
         </tr>
       </table>
-      <input type="submit" name="submit" class="btn btn-success float-right" value="ยินยันการแก้ไขข้อมูล">
+      <input type="submit" name="submit" class="btn btn-danger float-right" value="ยืนยันการลบข้อมูล">
     </form>
   </div>
   <?php

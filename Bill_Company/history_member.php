@@ -79,7 +79,7 @@ error_reporting(0);
 
 	$serverName = "localhost";
 	$userName = "root";
-	$userPassword = "password";
+	$userPassword = "";
 	$dbName = "bill_format";
 
 	$conn = mysqli_connect($serverName, $userName, $userPassword, $dbName);
@@ -160,7 +160,7 @@ error_reporting(0);
 							<div align="center"><?php echo $result["process"]; ?></div>
 						</td>
 						<td>
-							<div align="center"><?php echo $result["username"]; ?></div>
+							<div align="center"><?php echo $result["owner"]; ?></div>
 						</td>
 						<td align="center"><a class="btn btn-success" href="read.php?id=<?php echo $result["id"]; ?>">เปิดอ่าน</a></td>
 					</tr>

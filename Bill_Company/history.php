@@ -1,6 +1,7 @@
 <?php session_start();
 error_reporting(0);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +78,7 @@ error_reporting(0);
 		error_reporting(0);
 		include_once('connect.php');
 
-		$sql = "SELECT * FROM bill_data_message WHERE username = '$strUsername'";
+		$sql = "SELECT * FROM bill_data_message WHERE owner = '$strUsername'";
 		$query = mysqli_query($conn, $sql);
 
 		$num_rows = mysqli_num_rows($query);
@@ -133,10 +134,13 @@ error_reporting(0);
 							<div align="center">หน่วยงาน</div>
 						</th>
 						<th>
-							<div align="center">สถานะ </div>
+							<div align="center">ข้อมูล</div>
 						</th>
 						<th>
-							<div align="center">เจ้าของ</div>
+							<div align="center">สถานะ</div>
+						</th>
+						<th>
+							<div align="center">ผู้อัปโหลด</div>
 						</th>
 						<th>
 							<div align="center">เครื่องมือ </div>
@@ -150,15 +154,19 @@ error_reporting(0);
 							<td>
 								<div align="center"><?php echo $result["id"]; ?></div>
 							</td>
+							<td>
+								<div align="center"><?php echo $result["date_upload"]; ?></div>
+							</td>
 							<td><?php echo $result["po"]; ?></td>
 							<td><?php echo $result["header"]; ?></td>
 							<td>
 								<div align="center"><?php echo $result["process"]; ?></div>
 							</td>
 							<td>
-								<div align="center"><?php echo $result["username"]; ?></div>
+								<div align="center"><?php echo $result["owner"]; ?></div>
 							</td>
-							<td align="center"><a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">แก้ไข</a></td>
+							<td align="center"><a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">แก้ไขข้อมูล</a>
+								<a class="btn btn-danger" href="delete.php?id=<?php echo $result["id"]; ?>">ลบข้อมูล</a></td>
 						</tr>
 					<?php
 					}
