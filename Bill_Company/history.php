@@ -120,6 +120,11 @@ error_reporting(0);
 			</div>
 			<div class="form-group float-right">
 				<a href="add_data.php" class="btn btn-outline-primary float-right">เพิ่มข้อมูล</a>
+				&nbsp;
+			</div>
+
+			<div class="form-group float-right">
+				<a href="http://localhost/Project_D/Bill_company/testxls.xls" class="btn btn-outline-success float-right">ดาวโหลดฟอร์แมตเอกสาร</a>
 			</div>
 			<table id="example" class="table table-bordered " cellspacing="0" width="100%">
 				<thead class="thead-light">

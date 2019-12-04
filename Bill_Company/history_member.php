@@ -125,7 +125,7 @@ error_reporting(0);
 							<div align="center">ลำดับ </div>
 						</th>
 						<th>
-							<div align="center">วันที่ / เวลา </div>
+							<div align="center">เวลาในการส่งใบบิล</div>
 						</th>
 						<th>
 							<div align="center">หน่วยงาน</div>
