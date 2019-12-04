@@ -66,12 +66,13 @@ error_reporting(0);
           <?php } ?>
         </ul>
         </div>
+    </div>
   </nav>
   <div class="container">
     <div class="form-group mt-5">
       <h3 align="center">Import Database using Ajax</h3>
     </div>
-    <form method="post" enctype="multipart/form-data" action="export.php">
+    <form method="POST" enctype="multipart/form-data" action="export.php">
       <div class="form-group">
         <label for="exampleInputFile">กรุณาเลือกไฟล์ที่ต้องการอัปโหลด</label>
         <input type="file" class="form-control-file" name="file" id="exampleInputFile" onclick="return confirm('คุณแน่ใจที่ต้องการอัปโหลดข้อมูลหรือไม่ ?')" />

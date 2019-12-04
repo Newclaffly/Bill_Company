@@ -1,6 +1,7 @@
 <?php session_start();
 error_reporting(0);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@ error_reporting(0);
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>History Member</title>
+	<title>History</title>
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
@@ -68,133 +69,135 @@ error_reporting(0);
 		</div>
 	</nav>
 
-	<?php
-	date_default_timezone_set('Asia/Bangkok');
-	$strUsername =  $_SESSION["username"];
-	$strPermission = $_SESSION["permis"];
-	// print_r($strUsername);
-	// print_r($strPermission);
-	ini_set('display_errors', 1);
-	error_reporting(~0);
-
-	$serverName = "localhost";
-	$userName = "root";
-	$userPassword = "";
-	$dbName = "bill_format";
-
-	$conn = mysqli_connect($serverName, $userName, $userPassword, $dbName);
-
-	$sql = "SELECT * FROM bill_data_message";
-	$query = mysqli_query($conn, $sql);
-
-	$num_rows = mysqli_num_rows($query);
-
-	$per_page = 10;   // Per Page
-	$page  = 1;
-
-	if (isset($_GET["Page"])) {
-		$page = $_GET["Page"];
-	}
-
-	$prev_page = $page - 1;
-	$next_page = $page + 1;
-
-	$row_start = (($per_page * $page) - $per_page);
-	if ($num_rows <= $per_page) {
-		$num_pages = 1;
-	} else if (($num_rows % $per_page) == 0) {
-		$num_pages = ($num_rows / $per_page);
-	} else {
-		$num_pages = ($num_rows / $per_page) + 1;
-		$num_pages = (int) $num_pages;
-	}
-	$row_end = $per_page * $page;
-	if ($row_end > $num_rows) {
-		$row_end = $num_rows;
-	}
-
-
-	$sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
-	$query = mysqli_query($conn, $sql);
-
-
-	?>
-	<!-- <a href="add_data.php">Add</a> -->
 	<div class="container">
-		<div class="mx-auto mt-5">
-			<h1 align="center">รายการบันทึก</h1>
-		</div>
-		<table id="example" class="table table-bordered mt-5" cellspacing="0" width="100%">
-			<thead class="thead-light">
-				<tr>
-					<th>
-						<div align="center">ลำดับ </div>
-					</th>
-					<th>
-						<div align="center">วันที่ / เวลา </div>
-					</th>
-					<th>
-						<div align="center">หน่วยงาน</div>
-					</th>
-					<th>
-						<div align="center">สถานะ </div>
-					</th>
-					<th>
-						<div align="center">เจ้าของ</div>
-					</th>
-					<th>
-						<div align="center">เครื่องมือ </div>
-					</th>
-				</tr>
+		<?php
+		date_default_timezone_set('Asia/Bangkok');
+		$strUsername =  $_SESSION["username"];
+		$strPermission = $_SESSION["permis"];
+		ini_set('display_errors', 1);
+		error_reporting(0);
+		include_once('connect.php');
 
-				<?php
-				while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-					?>
+		$sql = "SELECT * FROM bill_data_message ";
+		$query = mysqli_query($conn, $sql);
+
+		$num_rows = mysqli_num_rows($query);
+
+		$per_page = 10;   // Per Page
+		$page  = 1;
+
+		if (isset($_GET["Page"])) {
+			$page = $_GET["Page"];
+		}
+
+		$prev_page = $page - 1;
+		$next_page = $page + 1;
+
+		$row_start = (($per_page * $page) - $per_page);
+		if ($num_rows <= $per_page) {
+			$num_pages = 1;
+		} else if (($num_rows % $per_page) == 0) {
+			$num_pages = ($num_rows / $per_page);
+		} else {
+			$num_pages = ($num_rows / $per_page) + 1;
+			$num_pages = (int) $num_pages;
+		}
+		$row_end = $per_page * $page;
+		if ($row_end > $num_rows) {
+			$row_end = $num_rows;
+		}
+
+
+		$sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
+		$query = mysqli_query($conn, $sql);
+
+
+		?>
+
+		<div class="container">
+			<div class="mx-auto mt-5">
+				<h1 align="center">รายการบันทึก</h1>
+			</div>
+			<table id="example" class="table table-bordered " cellspacing="0" width="100%">
+				<thead class="thead-light">
 					<tr>
-						<td>
-							<div align="center"><?php echo $result["id"]; ?></div>
-						</td>
-						<td><?php echo $result["po"]; ?></td>
-						<td><?php echo $result["header"]; ?></td>
-						<td>
-							<div align="center"><?php echo $result["process"]; ?></div>
-						</td>
-						<td>
-							<div align="center"><?php echo $result["owner"]; ?></div>
-						</td>
-						<td align="center"><a class="btn btn-success" href="read.php?id=<?php echo $result["id"]; ?>">เปิดอ่าน</a></td>
+						<th>
+							<div align="center">ลำดับ </div>
+						</th>
+						<th>
+							<div align="center">วันที่ / เวลา </div>
+						</th>
+						<th>
+							<div align="center">หน่วยงาน</div>
+						</th>
+						<th>
+							<div align="center">ข้อมูล</div>
+						</th>
+						<th>
+							<div align="center">สถานะ</div>
+						</th>
+						<th>
+							<div align="center">ผู้อัปโหลด</div>
+						</th>
+						<th>
+							<div align="center">เครื่องมือ </div>
+						</th>
 					</tr>
-				<?php
-				}
-				?>
-			</thead>
-		</table>
-		<div class="form-grpup text-right">
-			จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
-			<?php
-			if ($prev_page) {
-				echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
-			}
 
-			for ($i = 1; $i <= $num_pages; $i++) {
-				if ($i != $page) {
-					echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
-				} else {
-					echo "<b> $i </b>";
+					<?php
+					while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+						?>
+						<tr>
+							<td>
+								<div align="center"><?php echo $result["id"]; ?></div>
+							</td>
+							<td>
+								<div align="center"><?php echo $result["date_upload"]; ?></div>
+							</td>
+							<td><?php echo $result["po"]; ?></td>
+							<td><?php echo $result["header"]; ?></td>
+							<td>
+								<div align="center"><?php echo $result["process"]; ?></div>
+							</td>
+							<td>
+								<div align="center"><?php echo $result["owner"]; ?></div>
+							</td>
+							<td align="center"><a class="btn btn-success" href="read.php?id=<?php echo $result["id"]; ?>">เปิดอ่าน</a></td>
+						</tr>
+					<?php
+					}
+					?>
+					<thead>
+			</table>
+
+			<div class="form-grpup text-right">
+				จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
+				<?php
+				if ($prev_page) {
+					echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
 				}
-			}
-			if ($page != $num_pages) {
-				echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
-			}
-			$conn = null;
-			?>
-			<br><br><br>
+
+				for ($i = 1; $i <= $num_pages; $i++) {
+					if ($i != $page) {
+						echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
+					} else {
+						echo "<b> $i </b>";
+					}
+				}
+				if ($page != $num_pages) {
+					echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
+				}
+				$conn = null;
+				?>
+				<br><br><br>
+			</div>
 		</div>
 	</div>
 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+
 </body>
 
 </html>

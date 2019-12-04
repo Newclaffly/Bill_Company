@@ -1,42 +1,37 @@
 <?php
 session_start();
 error_reporting(0);
-
 ?>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<title>Save_read</title>
-	<meta http-equiv=refresh content=1;URL=../Table_data/history_member.php> </head> <body>
-	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>บันทึกการเปิดอ่าน</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<meta http-equiv='refresh' content='1; url=index.php '>
+</head>
+
+<body>
 	<?php
 	ini_set('display_errors', 1);
 	error_reporting(~0);
-
-	$serverName = "localhost";
-	$userName = "root";
-	$userPassword = "password";
-	$dbName = "bill_format";
-
-	$conn = mysqli_connect($serverName, $userName, $userPassword, $dbName);
+	date_default_timezone_set('Asia/Bangkok');
+	$date = date('Y-m-d h:i:s');
+	include_once('connect.php');
 	$sql = "UPDATE bill_data_message SET 
 			po = '" . $_POST["txtpo"] . "' ,
 			header = '" . $_POST["txtheader"] . "' ,
 			process = '" . $_POST["txtprocess"] . "' ,
-			username = '" . $_POST["txtusername"] . "', 
-			date_read = '" . $_POST["txtdate"] . "' 
+			date_read = '" . $date . "' ,
+			owner = '" . $_POST["txtowner"] . "' 
 			WHERE id = '" . $_POST["txtid"] . "' ";
 
-	$query = mysqli_query($conn, $sql);
 
-	if ($query) {
-		//echo "Record update successfully";
-	}
+	$query = mysqli_query($conn, $sql);
 
 	mysqli_close($conn);
 	?>
@@ -50,6 +45,7 @@ error_reporting(0);
 			<br>
 		</p>
 	</div>
-	</body>
+
+</body>
 
 </html>

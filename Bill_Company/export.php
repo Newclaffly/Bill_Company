@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+date_default_timezone_set('Asia/Bangkok');
 require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -41,9 +42,9 @@ if (isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mi
             // $PROCESS = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());  
             //  $postal_code = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());  
             //  $country = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());  
-           // $date_upload = date('Y-m-d') ;
+            $date_upload = date('Y-m-d h:i:s') ;
             $PROCESS = "Inporcess";
-            $query = "  INSERT INTO bill_data_message (po, header, process,owner)   VALUES ('" . $PO . "', '" . $HEADER . "', '" . $PROCESS . "', '" . $strUsername . "')  ";
+            $query = "  INSERT INTO bill_data_message (po, header, process,owner,date_upload)   VALUES ('" . $PO . "', '" . $HEADER . "', '" . $PROCESS . "', '" . $strUsername . "','".$date_upload."')  ";
             mysqli_query($connect, $query);
         }
     }

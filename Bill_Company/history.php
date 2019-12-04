@@ -128,7 +128,7 @@ error_reporting(0);
 							<div align="center">ลำดับ </div>
 						</th>
 						<th>
-							<div align="center">วันที่ / เวลา </div>
+							<div align="center">เวลาในการอัปโหลด</div>
 						</th>
 						<th>
 							<div align="center">หน่วยงาน</div>
@@ -138,6 +138,9 @@ error_reporting(0);
 						</th>
 						<th>
 							<div align="center">สถานะ</div>
+						</th>
+						<th>
+							<div align="center">เวลาในการเปิดอ่าน</div>
 						</th>
 						<th>
 							<div align="center">ผู้อัปโหลด</div>
@@ -161,6 +164,9 @@ error_reporting(0);
 							<td><?php echo $result["header"]; ?></td>
 							<td>
 								<div align="center"><?php echo $result["process"]; ?></div>
+							</td>
+							<td>
+								<div align="center"><?php echo $result["date_read"]; ?></div>
 							</td>
 							<td>
 								<div align="center"><?php echo $result["owner"]; ?></div>
@@ -201,26 +207,6 @@ error_reporting(0);
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-	<script>
-		$(document).on('click', '#getEdit', function(e) {
-			e.preventDefault();
-			var per_id = $(this).data('id');
-			//alert(per_id);
-			$('#content-data').html('');
-			$.ajax({
-				url: 'editdata.php',
-				type: 'POST',
-				data: 'id=' + per_id,
-				dataType: 'html'
-			}).done(function(data) {
-				$('#content-data').html('');
-				$('#content-data').html(data);
-			}).fial(function() {
-				$('#content-data').html('<p>Error</p>');
-			});
-		});
-	</script>
-
 </body>
 
 </html>
