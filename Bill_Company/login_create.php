@@ -10,7 +10,7 @@ error_reporting(0);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>เข้าสู่ระบบ</title>
+  <title>สร้างบัญชีผู้ใช้</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
@@ -19,44 +19,31 @@ error_reporting(0);
   session_start();
   include_once('connect.php');
 
-  if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $conn->real_escape_string($_POST['password']);
+  // if (isset($_POST['submit'])) {
+  //   $username = $_POST['username'];
+  //   $password = $conn->real_escape_string($_POST['password']);
 
-    $sql = "SELECT * FROM `bill_member` WHERE `username` = '" . $username . "' AND `password` = '" . $password . "' ";
-    $result = $conn->query($sql);
+  //   $sql = "SELECT * FROM `bill_member` WHERE `username` = '" . $username . "' AND `password` = '" . $password . "' ";
+  //   $result = $conn->query($sql);
 
     //echo print_r($result);
-    // if(){
 
+    // if ($result->num_rows > 0) {
+    //   $row = $result->fetch_assoc();
+    //   //echo $row['username'];
+    //   $_SESSION['id'] = $row['id'];
+    //   $_SESSION['username'] = $row['username'];
+    //   $_SESSION['permis'] = $row['permis'];
+    //   // echo  $_SESSION['permis'];
+    //   if ($_SESSION['permis'] == "Supplier") {
+    //     header('location:history.php');
+    //   } else {
+    //     header('location:history_member.php');
+    //   }
+    // } else {
+    //   echo 'username & password invalid';
     // }
-
-    if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      //echo $row['username'];
-      $_SESSION['id'] = $row['id'];
-      $_SESSION['username'] = $row['username'];
-      $_SESSION['permis'] = $row['permis'];
-      // echo  $_SESSION['permis']; 
-      $date_created = $_SESSION['date_created'] = $row['date_created'];
-      $date_expired = $_SESSION['date_expired'] = $row['date_expired'];
-      if ($_SESSION['permis'] == "Supplier") {
-        if ($date_created >= $date_expired) {
-          header('location:login_forgot.php');
-        } else {
-          header('location:history.php');
-        }
-      } else {
-        if ($date_created >= $date_expired) {
-          header('location:login_forgot.php');
-        } else {
-          header('location:history_member.php');
-        }
-      }
-    } else {
-      echo 'username & password invalid';
-    }
-  }
+//}
 
   ?>
 
@@ -64,9 +51,9 @@ error_reporting(0);
     <div class="row">
       <div class="col-md-8 mx-auto mt-5">
         <div class="card">
-          <form action="" method="POST">
+          <form action="save_create_login.php" method="POST">
             <div class="card-header">
-              Login in to Your Account!!
+              Created this Account!!
             </div>
             <div class="card-body">
               <div class="form-group row">
@@ -87,7 +74,7 @@ error_reporting(0);
               </div>
             </div>
             <div class="card-footer text-center">
-              <input type="submit" name="submit" class="btn btn-success" value="เข้าสู่ระบบ">
+              <input type="submit" name="submit" class="btn btn-success" value="ยืนยันการสร้าง">
             </div>
           </form>
         </div>
