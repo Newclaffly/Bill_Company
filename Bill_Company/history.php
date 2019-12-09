@@ -14,9 +14,9 @@ error_reporting(0);
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">Navbar</a>
+			<a class="navbar-brand" href="index.php">Menu</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -139,7 +139,7 @@ error_reporting(0);
 							<div align="center">หน่วยงาน</div>
 						</th>
 						<th>
-							<div align="center">ข้อมูล</div>
+							<div align="center">หัวข้อเรื่อง</div>
 						</th>
 						<th>
 							<div align="center">สถานะ</div>
@@ -147,9 +147,9 @@ error_reporting(0);
 						<th>
 							<div align="center">เวลาในการเปิดอ่าน</div>
 						</th>
-						<th>
+						<!-- <th>
 							<div align="center">ผู้อัปโหลด</div>
-						</th>
+						</th> -->
 						<th>
 							<div align="center">เครื่องมือ </div>
 						</th>
@@ -173,11 +173,13 @@ error_reporting(0);
 							<td>
 								<div align="center"><?php echo $result["date_read"]; ?></div>
 							</td>
-							<td>
+							<!-- <td>
 								<div align="center"><?php echo $result["owner"]; ?></div>
+							</td> -->
+							<td align="center"><a class="btn btn-primary" href="delete.php?id=<?php echo $result["id"]; ?>">ดูข้อมูล</a>
+								<a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">แก้ไขข้อมูล</a>
+								<a class="btn btn-danger" href="delete.php?id=<?php echo $result["id"]; ?>">ลบข้อมูล</a>
 							</td>
-							<td align="center"><a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">แก้ไขข้อมูล</a>
-								<a class="btn btn-danger" href="delete.php?id=<?php echo $result["id"]; ?>">ลบข้อมูล</a></td>
 						</tr>
 					<?php
 					}

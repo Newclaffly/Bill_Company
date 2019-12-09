@@ -116,7 +116,7 @@
 
         </tr>
       </table>
-      <input type="submit" name="submit" class="btn btn-success float-right" value="ยินยันการแก้ไขข้อมูล">
+      <!-- <input type="submit" name="submit" class="btn btn-success float-right" value="ยินยันการแก้ไขข้อมูล"> -->
     </form>
   </div>
   <?php
