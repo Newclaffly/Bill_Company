@@ -77,7 +77,7 @@ error_reporting(0);
 		ini_set('display_errors', 1);
 		error_reporting(0);
 		include_once('connect.php');
-
+		include_once('modal_detail.php');
 		$sql = "SELECT * FROM bill_data_message WHERE owner = '$strUsername'";
 		$query = mysqli_query($conn, $sql);
 
@@ -175,9 +175,10 @@ error_reporting(0);
 							</td>
 							<!-- <td>
 								<div align="center"><?php echo $result["owner"]; ?></div>
-							</td> -->
-							<td align="center"><a class="btn btn-primary" href="delete.php?id=<?php echo $result["id"]; ?>">ดูข้อมูล</a>
-								<a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>">แก้ไขข้อมูล</a>
+							</td>   -->
+							<td align="center">
+								<a class="btn btn-primary" href="deatil_history.php?id=<?php echo $result["id"]; ?>" style="color:white;">ดูข้อมูล</a>
+								<a class="btn btn-warning" href="edit.php?id=<?php echo $result["id"]; ?>" style="color:white;">แก้ไขข้อมูล</a>
 								<a class="btn btn-danger" href="delete.php?id=<?php echo $result["id"]; ?>">ลบข้อมูล</a>
 							</td>
 						</tr>
@@ -211,9 +212,12 @@ error_reporting(0);
 		</div>
 	</div>
 
+
+
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+
 </body>
 
 </html>
