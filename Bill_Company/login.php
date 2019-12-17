@@ -27,9 +27,6 @@ error_reporting(0);
     $result = $conn->query($sql);
 
     //echo print_r($result);
-    // if(){
-
-    // }
 
     if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
@@ -40,16 +37,25 @@ error_reporting(0);
       // echo  $_SESSION['permis']; 
       $date_created = $_SESSION['date_created'] = $row['date_created'];
       $date_expired = $_SESSION['date_expired'] = $row['date_expired'];
+      // echo $date_created;
+      // echo '<br>';
+      // echo $date_expired;
+      $date_now = date("Y-m-d");
+      echo $date_now;
       if ($_SESSION['permis'] == "Supplier") {
-        if ($date_created >= $date_expired) {
+        if ($date_expired <= $date_now) {
           header('location:login_forgot.php');
+          // echo 'true';
         } else {
           header('location:history.php');
+          // echo 'false';
         }
       } else {
-        if ($date_created >= $date_expired) {
+        if ($date_expired <= $date_now) {
+          //echo 'true';
           header('location:login_forgot.php');
         } else {
+          //echo 'false';
           header('location:history_member.php');
         }
       }

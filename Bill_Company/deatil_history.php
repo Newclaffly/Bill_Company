@@ -87,19 +87,19 @@ error_reporting(0);
       <table class="table table-bordered">
         <tr>
           <th>ID</th>
-          <td><input type="hidden" name="txtid" class="form-control" value="<?php echo $result["id"]; ?>"><?php echo $result["id"]; ?></td>
+          <td><input type="hidden" name="txtid" class="form-control" value="<?php echo $result["id"]; ?>"disabled><?php echo $result["id"]; ?></td>
         </tr>
         <tr>
           <th>Po</th>
-          <td><input type="text" name="txtpo" class="form-control" value="<?php echo $result["po"]; ?>"></td>
+          <td><input type="text" name="txtpo" class="form-control" value="<?php echo $result["po"]; ?>" disabled></td>
         </tr>
         <tr>
           <th>Header</th>
-          <td><input type="text" name="txtheader" class="form-control" value="<?php echo $result["header"]; ?>"></td>
+          <td><input type="text" name="txtheader" class="form-control" value="<?php echo $result["header"]; ?>" disabled></td>
         </tr>
         <tr>
           <th>Process</th>
-          <td><input type="text" name="txtprocess" class="form-control" value="<?php echo $result["process"]; ?>"></td>
+          <td><input type="text" name="txtprocess" class="form-control" value="<?php echo $result["process"]; ?>" disabled></td>
         </tr>
         <tr>
           <th>Owner</th>
