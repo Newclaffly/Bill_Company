@@ -27,19 +27,19 @@ error_reporting(0);
                             <div class="form-group row">
                                 <label for="forgot_username" class="col-sm-3 col-form-label">ชื่อผู้ใช้</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="forgot_username" id="forgot_username">
+                                    <input type="text" class="form-control" name="forgot_username" id="forgot_username" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="forgot_password" class="col-sm-3 col-form-label">รหัสผ่าน</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="forgot_password" id="forgot_password">
+                                    <input type="password" class="form-control" name="forgot_password" id="forgot_password" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="password_confirm" class="col-sm-3 col-form-label">ยืนยันรหัสผ่าน</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password_confirm" id="password_confirm">
+                                    <input type="password" class="form-control" name="password_confirm" id="password_confirm" required>
                                 </div>
                             </div>
                         </div>

@@ -18,52 +18,37 @@ error_reporting(0);
   <?php
   session_start();
   include_once('connect.php');
-
   if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $conn->real_escape_string($_POST['password']);
-
     $sql = "SELECT * FROM `bill_member` WHERE `username` = '" . $username . "' AND `password` = '" . $password . "' ";
     $result = $conn->query($sql);
-
-    //echo print_r($result);
-
     if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
-      //echo $row['username'];
       $_SESSION['id'] = $row['id'];
       $_SESSION['username'] = $row['username'];
       $_SESSION['permis'] = $row['permis'];
-      // echo  $_SESSION['permis']; 
       $date_created = $_SESSION['date_created'] = $row['date_created'];
       $date_expired = $_SESSION['date_expired'] = $row['date_expired'];
-      // echo $date_created;
-      // echo '<br>';
-      // echo $date_expired;
       $date_now = date("Y-m-d");
       echo $date_now;
       if ($_SESSION['permis'] == "Supplier") {
         if ($date_expired <= $date_now) {
           header('location:login_forgot.php');
-          // echo 'true';
         } else {
           header('location:history.php');
-          // echo 'false';
         }
       } else {
         if ($date_expired <= $date_now) {
-          //echo 'true';
           header('location:login_forgot.php');
         } else {
-          //echo 'false';
           header('location:history_member.php');
         }
       }
     } else {
-      echo 'username & password invalid';
+      echo "<script>alert('ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง!');</script>";
     }
   }
-
   ?>
 
   <div class="container">
@@ -78,13 +63,13 @@ error_reporting(0);
               <div class="form-group row">
                 <label for="username" class="col-sm-3 col-form-label">Username</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="username" id="username">
+                  <input type="text" class="form-control" name="username" id="username" required>
                 </div>
               </div>
               <div class="form-group row">
                 <label for="password" class="col-sm-3 col-form-label">Password</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" name="password" id="password">
+                  <input type="password" class="form-control" name="password" id="password" required>
                   <br>
                   <div class="float-right">
                     <a href="login_forgot.php" class="float-right">ลืมรหัสผ่าน</a>

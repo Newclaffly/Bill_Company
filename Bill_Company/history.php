@@ -23,7 +23,7 @@ error_reporting(0);
 			<?php
 			session_start();
 			if ($_SESSION['permis'] == "Supplier") {
-				?>
+			?>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
@@ -34,8 +34,8 @@ error_reporting(0);
 						</li>
 					</ul>
 				<?php
-				} else {
-					?>
+			} else {
+				?>
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
 							<a class="nav-link" href="history_member.php">หน้าหลัก <span class="sr-only">(current)</span></a>
@@ -50,7 +50,7 @@ error_reporting(0);
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
-													$user = $_SESSION['username']; ?>
+												$user = $_SESSION['username']; ?>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#">Action</a>
@@ -71,45 +71,45 @@ error_reporting(0);
 
 	<div class="container">
 		<?php
-		date_default_timezone_set('Asia/Bangkok');
-		$strUsername =  $_SESSION["username"];
-		$strPermission = $_SESSION["permis"];
-		ini_set('display_errors', 1);
-		error_reporting(0);
-		include_once('connect.php');
-		include_once('modal_detail.php');
-		$sql = "SELECT * FROM bill_data_message WHERE owner = '$strUsername'";
-		$query = mysqli_query($conn, $sql);
+											date_default_timezone_set('Asia/Bangkok');
+											$strUsername =  $_SESSION["username"];
+											$strPermission = $_SESSION["permis"];
+											ini_set('display_errors', 1);
+											error_reporting(0);
+											include_once('connect.php');
+											include_once('modal_detail.php');
+											$sql = "SELECT * FROM bill_data_message WHERE owner = '$strUsername'";
+											$query = mysqli_query($conn, $sql);
 
-		$num_rows = mysqli_num_rows($query);
+											$num_rows = mysqli_num_rows($query);
 
-		$per_page = 10;   // Per Page
-		$page  = 1;
+											$per_page = 10;   // Per Page
+											$page  = 1;
 
-		if (isset($_GET["Page"])) {
-			$page = $_GET["Page"];
-		}
+											if (isset($_GET["Page"])) {
+												$page = $_GET["Page"];
+											}
 
-		$prev_page = $page - 1;
-		$next_page = $page + 1;
+											$prev_page = $page - 1;
+											$next_page = $page + 1;
 
-		$row_start = (($per_page * $page) - $per_page);
-		if ($num_rows <= $per_page) {
-			$num_pages = 1;
-		} else if (($num_rows % $per_page) == 0) {
-			$num_pages = ($num_rows / $per_page);
-		} else {
-			$num_pages = ($num_rows / $per_page) + 1;
-			$num_pages = (int) $num_pages;
-		}
-		$row_end = $per_page * $page;
-		if ($row_end > $num_rows) {
-			$row_end = $num_rows;
-		}
+											$row_start = (($per_page * $page) - $per_page);
+											if ($num_rows <= $per_page) {
+												$num_pages = 1;
+											} else if (($num_rows % $per_page) == 0) {
+												$num_pages = ($num_rows / $per_page);
+											} else {
+												$num_pages = ($num_rows / $per_page) + 1;
+												$num_pages = (int) $num_pages;
+											}
+											$row_end = $per_page * $page;
+											if ($row_end > $num_rows) {
+												$row_end = $num_rows;
+											}
 
 
-		$sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
-		$query = mysqli_query($conn, $sql);
+											$sql .= " ORDER BY id ASC LIMIT $row_start ,$row_end ";
+											$query = mysqli_query($conn, $sql);
 
 
 		?>
@@ -119,13 +119,20 @@ error_reporting(0);
 				<h1 align="center">รายการบันทึก</h1>
 			</div>
 			<div class="form-group float-right">
+				<a href="" class="btn btn-outline-success float-right">Export</a>
+				&nbsp;
+			</div>
+			<div class="form-group float-right">
 				<a href="add_data.php" class="btn btn-outline-primary float-right">เพิ่มข้อมูล</a>
 				&nbsp;
 			</div>
 
 			<div class="form-group float-right">
-				<a href="http://localhost/Project_D/Bill_company/testxls.xls" class="btn btn-outline-success float-right">ดาวโหลดฟอร์แมตเอกสาร</a>
+				<a href="http://localhost/Project_D/Bill_company/testxls.xls" class="btn btn-outline-warning float-right">ดาวโหลดฟอร์แมตเอกสาร</a>
+
 			</div>
+
+
 			<table id="example" class="table table-bordered " cellspacing="0" width="100%">
 				<thead class="thead-light">
 					<tr>
@@ -156,8 +163,8 @@ error_reporting(0);
 					</tr>
 
 					<?php
-					while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-						?>
+											while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+					?>
 						<tr>
 							<td>
 								<div align="center"><?php echo $result["id"]; ?></div>
@@ -183,7 +190,7 @@ error_reporting(0);
 							</td>
 						</tr>
 					<?php
-					}
+																					}
 					?>
 					<thead>
 			</table>
@@ -191,21 +198,21 @@ error_reporting(0);
 			<div class="form-grpup text-right">
 				จำนวน <?php echo $num_rows; ?> แถว : <?php echo $num_pages; ?> หน้าที่ :
 				<?php
-				if ($prev_page) {
-					echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
-				}
+																					if ($prev_page) {
+																						echo " <a href='$_SERVER[SCRIPT_NAME]?Page=$prev_page'><< Back</a> ";
+																					}
 
-				for ($i = 1; $i <= $num_pages; $i++) {
-					if ($i != $page) {
-						echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
-					} else {
-						echo "<b> $i </b>";
-					}
-				}
-				if ($page != $num_pages) {
-					echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
-				}
-				$conn = null;
+																					for ($i = 1; $i <= $num_pages; $i++) {
+																						if ($i != $page) {
+																							echo "[ <a href='$_SERVER[SCRIPT_NAME]?Page=$i'>$i</a> ]";
+																						} else {
+																							echo "<b> $i </b>";
+																						}
+																					}
+																					if ($page != $num_pages) {
+																						echo " <a href ='$_SERVER[SCRIPT_NAME]?Page=$next_page'>Next>></a> ";
+																					}
+																					$conn = null;
 				?>
 				<br><br><br>
 			</div>
