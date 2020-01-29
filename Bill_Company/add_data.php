@@ -70,7 +70,7 @@ error_reporting(0);
   </nav>
   <div class="container">
     <div class="form-group mt-5">
-      <h3 align="center">Import Database using Ajax</h3>
+      <h3 align="center">นำเข้าใบวางบิล</h3>
     </div>
     <form method="POST" enctype="multipart/form-data" action="export.php">
       <div class="form-group">

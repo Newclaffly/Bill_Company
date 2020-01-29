@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.php">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
       <?php
       session_start();
       if ($_SESSION['permis'] == "Supplier") {
-        ?>
+      ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -30,8 +30,8 @@
             </li>
           </ul>
         <?php
-        } else {
-          ?>
+      } else {
+        ?>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="history_member.php">หน้าหลัก <span class="sr-only">(current)</span></a>
@@ -46,7 +46,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
-                                  $user = $_SESSION['username']; ?>
+                                $user = $_SESSION['username']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Action</a>
