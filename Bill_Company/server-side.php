@@ -33,10 +33,11 @@ $columns = array(
     array('db' => 'start_date_bo',  'dt' => 1),
     array('db' => 'name_company_cus',   'dt' => 2),
     array('db' => 'end_date_bod',     'dt' => 3),
-    array('db' => 'status_docs',     'dt' => 4),
+    array('db' => 'read_date_cus',     'dt' => 4),
+    array('db' => 'status_docs',     'dt' => 5),
     array(
         'db'        => 'id',
-        'dt'        => 5,
+        'dt'        => 6,
         'formatter' => function ($d, $row) {
             return '<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'">Preview</button>  <button onclick="Delete_rows(' . $d . ')" class="btn btn-sm btn-danger">Delete</button>';
          // Edit return '<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'">Edit</button>  <button onclick="Delete_rows(' . $d . ')" class="btn btn-sm btn-danger">Delete</button>';
