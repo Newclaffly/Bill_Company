@@ -32,7 +32,7 @@ $columns = array(
     array('db' => 'id', 'dt' => 0),
     array('db' => 'start_date_bo',  'dt' => 1),
     array('db' => 'name_company_bo',   'dt' => 2),
-    array('db' => 'end_date_bod',     'dt' => 3),
+    array('db' => 'end_date_bo',     'dt' => 3),
     array('db' => 'read_date_cus',     'dt' => 4),
     array('db' => 'status_docs',     'dt' => 5),
     array(

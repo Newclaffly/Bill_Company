@@ -162,8 +162,8 @@ error_reporting(0);
 							<input type="text" class="form-control" disabled id="name_company_cus">
 						</div>
 						<div class="form-group">
-							<label for="end_date_bod" class="col-form-label">วันครบกำหนด:</label>
-							<input type="text" class="form-control" disabled id="end_date_bod">
+							<label for="end_date_bo" class="col-form-label">วันครบกำหนด:</label>
+							<input type="text" class="form-control" disabled id="end_date_bo">
 						</div>
 						<div class="form-group">
 							<label for="read_date_cus" class="col-form-label">วันที่เปิดอ่านเอกสาร:</label>
@@ -223,7 +223,7 @@ error_reporting(0);
 					$('#id').val(json[0].id);
 					$('#start_date_bo').val(json[0].start_date_bo);
 					$('#name_company_cus').val(json[0].name_company_cus);
-					$('#end_date_bod').val(json[0].end_date_bod);
+					$('#end_date_bo').val(json[0].end_date_bod);
 					$('#read_date_cus').val(json[0].read_date_cus);
 					$('#status_docs').val(json[0].status_docs);
 				}

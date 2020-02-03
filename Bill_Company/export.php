@@ -32,21 +32,33 @@ if (isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mi
     $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
 
     $sheetData = $spreadsheet->getActiveSheet()->toArray();
-   //  print_r($sheetData);
+    //  print_r($sheetData);
 
     foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
         $highestRow = $worksheet->getHighestRow();
-        for ($row = 2; $row <= $highestRow; $row++) {
-            $PO = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(0, $row)->getValue());
-            $HEADER = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
-            // $PROCESS = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());  
-            //  $postal_code = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());  
-            //  $country = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());  
-            $date_upload = date('Y-m-d h:i:s') ;
-            $PROCESS = "Inporcess";
-            $query = "  INSERT INTO bill_data_message (po, header, process,owner,date_upload)   VALUES ('" . $PO . "', '" . $HEADER . "', '" . $PROCESS . "', '" . $strUsername . "','".$date_upload."')  ";
-            mysqli_query($connect, $query);
-        }
+        // for ($row = 2; $row <= $highestRow; $row++) {
+        //                  Bussiness               //
+        $name_company_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 2)->getValue());
+        $adress_company_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 4)->getValue());
+        $tax_company_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 3)->getValue());
+        $phone_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 6)->getValue());
+        $email_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 7)->getValue());
+        $number_bill_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, 2)->getValue());
+        $start_date_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, 3)->getValue());
+        $end_date_bo = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, 4)->getValue());
+        //                  Customers               //
+        $name_company_cus = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 10)->getValue());
+        $adress_company_cus = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 12)->getValue());
+        $tax_company_cus = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 11)->getValue());
+        $phone_cus = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 14)->getValue());
+        $email_cus = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, 15)->getValue());
+        $summary_cus = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, 41)->getValue());
+
+        $status_docs = "Inprocess";
+        $query = "  INSERT INTO bill_invoice (name_company_bo,adress_company_bo,tax_company_bo,phone_bo,email_bo,number_bill_bo,start_date_bo,end_date_bo,name_company_cus,adress_company_cus,tax_company_cus,phone_cus,email_cus,summary_cus,status_docs)   VALUES ('" . $name_company_bo . "', '" . $adress_company_bo . "', '" . $tax_company_bo . "','" . $phone_bo . "','" . $email_bo . "','" . $number_bill_bo . "','" . $start_date_bo . "','" . $end_date_bo . "','" . $name_company_cus . "','" . $adress_company_cus . "','" . $tax_company_cus . "','" . $phone_cus . "','" . $email_cus . "','" . $summary_cus . "', '" . $status_docs . "')  ";
+        // $query = "  INSERT INTO bill_invoice (name_company_bo, adress_company_bo, office_company_bo,branch_office_bo,phone_bo,status_docs)   VALUES ('" . $name_company_bo . "', '" . $adress_company_bo . "', '" . $office_company_bo . "', '" . $branch_office_bo . "','" . $phone_bo . "', '".$status_docs."')  ";
+        mysqli_query($connect, $query);
+        //}
     }
     mysqli_close($connect);
     echo " <meta http-equiv='refresh' content='1; url=add_data.php '>";
