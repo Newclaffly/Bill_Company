@@ -56,8 +56,8 @@ error_reporting(0);
       <div class="col-md-8 mx-auto mt-5">
         <div class="card">
           <form action="" method="POST">
-            <div class="card-header">
-              Login in to Your Account!!
+            <div class="card-header" style="text-align: center">
+              หน้าจอเข้าสู่ระบบ
             </div>
             <div class="card-body">
               <div class="form-group row">

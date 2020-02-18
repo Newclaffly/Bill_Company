@@ -20,8 +20,8 @@ error_reporting(0);
             <div class="col-md-8 mx-auto mt-5">
                 <div class="card">
                     <form action="save_forgot.php" method="POST">
-                        <div class="card-header">
-                            Forgot in to Your Account!!
+                        <div class="card-header" style="text-align: center">
+                            หน้าจอลืมรหัสผ่าน
                         </div>
                         <div class="card-body">
                             <div class="form-group row">
@@ -44,6 +44,7 @@ error_reporting(0);
                             </div>
                         </div>
                         <div class="card-footer text-center">
+                        <a href="history_member.php" class="btn btn-secondary float-Left">กลับหน้ารายการบันทึก</a>
                             <input type="submit" name="submit" class="btn btn-success" value="เปลี่ยนรหัสผ่าน">
                         </div>
                     </form>

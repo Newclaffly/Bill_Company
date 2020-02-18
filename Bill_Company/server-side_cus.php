@@ -29,15 +29,15 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db' => 'id', 'dt' => 0),
-    array('db' => 'start_date_bo',  'dt' => 1),
-    array('db' => 'name_company_bo',   'dt' => 2),
-    array('db' => 'end_date_bo',     'dt' => 3),
-    array('db' => 'read_date_cus',     'dt' => 4),
-    array('db' => 'status_docs',     'dt' => 5),
+    // array('db' => 'id', 'dt' => 0),
+    array('db' => 'start_date_bo',  'dt' => 0),
+    array('db' => 'name_company_bo',   'dt' => 1),
+    array('db' => 'end_date_bo',     'dt' => 2),
+    array('db' => 'read_date_cus',     'dt' => 3),
+    array('db' => 'status_docs',     'dt' => 4),
     array(
         'db'        => 'id',
-        'dt'        => 6,
+        'dt'        => 5,
         'formatter' => function ($d, $row) {
             return '<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'">Read</button>';
          // Edit return '<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'">Edit</button>  <button onclick="Delete_rows(' . $d . ')" class="btn btn-sm btn-danger">Delete</button>';
@@ -62,7 +62,7 @@ $columns = array(
 // SQL server connection information
 $sql_details = array(
     'user' => 'root',
-    'pass' => '',
+    'pass' => '@Newayw123',
     'db'   => 'bill_format',
     'host' => 'localhost'
 );

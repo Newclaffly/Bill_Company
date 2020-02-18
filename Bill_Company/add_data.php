@@ -16,7 +16,7 @@ error_reporting(0);
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="index.php">Navbar</a>
+      <a class="navbar-brand" href="index.php">หน้าหลัก</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,11 +27,11 @@ error_reporting(0);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="history.php">หน้าหลัก <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="history.php">รายการบันทึกใบวางบิล<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
-            </li>
+            </li> -->
           </ul>
         <?php
         } else {
@@ -40,9 +40,9 @@ error_reporting(0);
             <li class="nav-item active">
               <a class="nav-link" href="history_member.php">หน้าหลัก <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
-            </li>
+            </li> -->
           </ul>
         <?php } ?>
         <ul class="navbar-nav ml-auto">
@@ -53,15 +53,15 @@ error_reporting(0);
                                   $user = $_SESSION['username']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="login_forgot.php">ลืมรหัสผ่าน</a>
+                <!-- <a class="dropdown-item" href="#">Another action</a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="logout.php">Logout</a>
+                <a class="dropdown-item" href="logout.php">ออกจากระบบ</a>
               </div>
             </li>
           <?php } else { ?>
             <li class="nav-item">
-              <a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">Login</a>
+              <a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">เข้าสู่ระบบ</a>
             </li>
           <?php } ?>
         </ul>
@@ -83,9 +83,9 @@ error_reporting(0);
       <?php
       if ($_SESSION['permis'] == "Supplier") {
         ?>
-        <a href="history.php" class="btn btn-info float-right">กลับหน้ารายการบันทึก</a>
+        <a href="history.php" class="btn btn-secondary float-right">กลับหน้ารายการบันทึก</a>
       <?php } else { ?>
-        <a href="history_member.php" class="btn btn-info float-right">กลับหน้ารายการบันทึก</a>
+        <a href="history_member.php" class="btn btn-secondary float-right">กลับหน้ารายการบันทึก</a>
       <?php } ?>
     </div>
   </div>

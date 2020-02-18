@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if($_SESSION['username']==""){
+
+	echo "<br><center><h3><font color=\"#CC0099\">คุณยังไม่ได้เข้าสู่ระบบ กรุณาเข้าสู่ระบบก่อน</font></h3></center>";
+	
+	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
+	
+	exit();
+	
+	}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +21,13 @@
 
 <body>
 <?php
-echo 'Current PHP version: ' . phpversion();
-error_reporting(0);
+// echo 'Current PHP version: ' . phpversion();
+// error_reporting(0);
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">Navbar</a>
+			<a class="navbar-brand" href="index.php">หน้าหลัก</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -29,22 +38,22 @@ error_reporting(0);
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="history.php">หน้าหลัก <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="history.php">รายการบันทึก <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="#">Link</a>
-						</li>
+						</li> -->
 					</ul>
 				<?php
 				} else {
 					?>
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="history_member.php">หน้าหลัก <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="history_member.php">รายการบันทึก <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="#">Link</a>
-						</li>
+						</li> -->
 					</ul>
 				<?php } ?>
 				<ul class="navbar-nav ml-auto">
@@ -55,15 +64,15 @@ error_reporting(0);
 													$user = $_SESSION['username']; ?>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
+								<!-- <a class="dropdown-item" href="#">Action</a> -->
+								<a class="dropdown-item" href="login_forgot.php">เปลี่ยนรหัสผ่าน</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="logout.php">Logout</a>
+								<a class="dropdown-item" href="logout.php">ออกจากระบบ</a>
 							</div>
 						</li>
 					<?php } else { ?>
 						<li class="nav-item">
-							<a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">Login</a>
+							<a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">เข้าสู่ระบบ</a>
 						</li>
 					<?php } ?>
 				</ul>

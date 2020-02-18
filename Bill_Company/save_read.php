@@ -1,6 +1,15 @@
 <?php
 session_start();
 error_reporting(0);
+if($_SESSION['username']==""){
+
+	echo "<br><center><h3><font color=\"#CC0099\">คุณยังไม่ได้เข้าสู่ระบบ กรุณาเข้าสู่ระบบก่อน</font></h3></center>";
+	
+	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
+	
+	exit();
+	
+	}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +29,8 @@ error_reporting(0);
 	ini_set('display_errors', 1);
 	error_reporting(~0);
 	date_default_timezone_set('Asia/Bangkok');
-	$date = date('Y-m-d h:i:s');
+	$date = date('d/m/Y');
+	// echo $date;
 	include_once('connect.php');
 	$sql = "UPDATE bill_data_message SET 
 			po = '" . $_POST["txtpo"] . "' ,

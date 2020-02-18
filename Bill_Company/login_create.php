@@ -1,6 +1,15 @@
 <?php
 ob_start();
 session_start();
+if($_SESSION['username']==""){
+
+	echo "<br><center><h3><font color=\"#CC0099\"> คุณยังไม่ได้login กรุณาloginเข้าสู่ระบบก่อน</font></h3></center>";
+	
+	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
+	
+	exit();
+	
+	}
 error_reporting(0);
 ?>
 <!DOCTYPE html>
@@ -18,32 +27,6 @@ error_reporting(0);
   <?php
   session_start();
   include_once('connect.php');
-
-  // if (isset($_POST['submit'])) {
-  //   $username = $_POST['username'];
-  //   $password = $conn->real_escape_string($_POST['password']);
-
-  //   $sql = "SELECT * FROM `bill_member` WHERE `username` = '" . $username . "' AND `password` = '" . $password . "' ";
-  //   $result = $conn->query($sql);
-
-    //echo print_r($result);
-
-    // if ($result->num_rows > 0) {
-    //   $row = $result->fetch_assoc();
-    //   //echo $row['username'];
-    //   $_SESSION['id'] = $row['id'];
-    //   $_SESSION['username'] = $row['username'];
-    //   $_SESSION['permis'] = $row['permis'];
-    //   // echo  $_SESSION['permis'];
-    //   if ($_SESSION['permis'] == "Supplier") {
-    //     header('location:history.php');
-    //   } else {
-    //     header('location:history_member.php');
-    //   }
-    // } else {
-    //   echo 'username & password invalid';
-    // }
-//}
 
   ?>
 

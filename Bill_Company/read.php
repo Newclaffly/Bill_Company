@@ -25,9 +25,9 @@
             <li class="nav-item active">
               <a class="nav-link" href="history.php">หน้าหลัก <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
-            </li>
+            </li> -->
           </ul>
         <?php
       } else {

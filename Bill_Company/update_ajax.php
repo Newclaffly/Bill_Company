@@ -2,8 +2,9 @@
 ini_set('display_errors', 1);
 error_reporting(~0);
 date_default_timezone_set('Asia/Bangkok');
-$date = date('Y-m-d');
-echo $date;
+//$date = date('Y/m/d');
+$date = date('d/m/Y');
+//echo $date;
 include_once('connect.php');
 if (isset($_POST["read_date_cus"]) && ($_POST["status_docs"])) {
     $status = "Success";
