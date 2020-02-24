@@ -39,7 +39,7 @@ $columns = array(
         'db'        => 'id',
         'dt'        => 5,
         'formatter' => function ($d, $row) {
-            return '<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'">Read</button>';
+            return '<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'"><i class="fas fa-envelope-open"></i> Read</button>';
          // Edit return '<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="'.$d.'">Edit</button>  <button onclick="Delete_rows(' . $d . ')" class="btn btn-sm btn-danger">Delete</button>';
         }
     ),

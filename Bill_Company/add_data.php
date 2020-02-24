@@ -16,7 +16,7 @@ error_reporting(0);
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="index.php">หน้าหลัก</a>
+      <a class="navbar-brand" href="index.php"><i class="fas fa-home"></i> หน้าหลัก</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,7 +27,7 @@ error_reporting(0);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="history.php">รายการบันทึกใบวางบิล<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="history.php"><i class="fas fa-history"></i> รายการบันทึกใบวางบิล<span class="sr-only">(current)</span></a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -49,14 +49,14 @@ error_reporting(0);
           <?php if (isset($_SESSION['id'])) { ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
+              <i class="fas fa-user"></i> ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
                                   $user = $_SESSION['username']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login_forgot.php">ลืมรหัสผ่าน</a>
+                <a class="dropdown-item" href="login_forgot.php"><i class="fas fa-key"></i> ลืมรหัสผ่าน</a>
                 <!-- <a class="dropdown-item" href="#">Another action</a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="logout.php">ออกจากระบบ</a>
+                <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
               </div>
             </li>
           <?php } else { ?>
@@ -92,6 +92,8 @@ error_reporting(0);
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
 
 
 </body>

@@ -79,7 +79,7 @@ if (isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mi
     echo "  <div align='center'>";
     echo " <p><br> ";
     echo  "<br>";
-    echo   " <font size='3' face='MS Sans Serif, Tahoma, sans-serif'><b>บันทึกการแก้ไขข้อมูลเรียบร้อยสำเร็จ</b></font>";
+    echo   " <font size='3' face='MS Sans Serif, Tahoma, sans-serif'><b>บันทึกข้อมูลสำเร็จ</b></font>";
     echo "</p>";
     echo "<p>";
     echo  "<font size='3' face='MS Sans Serif, Tahoma, sans-serif'>กรุณารอสักครู่ เพื่อกลับหน้าบันทึกรายการ</font><br>";

@@ -26,7 +26,7 @@ if($_SESSION['username']==""){
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">หน้าหลัก</a>
+			<a class="navbar-brand" href="index.php"><i class="fas fa-home"></i> หน้าหลัก</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -37,7 +37,7 @@ if($_SESSION['username']==""){
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="history.php">รายการบันทึกใบวางบิล<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="history.php"> <i class="fas fa-history"></i>  รายการบันทึกใบวางบิล<span class="sr-only">(current)</span></a>
 						</li>
 						<!-- <li class="nav-item">
 							<a class="nav-link" href="#">Link</a>
@@ -59,14 +59,14 @@ if($_SESSION['username']==""){
 					<?php if (isset($_SESSION['id'])) { ?>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
+							<i class="fas fa-user"></i> ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
 												$user = $_SESSION['username']; ?>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="login_forgot.php">เปลี่ยนรหัสผ่าน</a>
+								<a class="dropdown-item" href="login_forgot.php"><i class="fas fa-key"></i> เปลี่ยนรหัสผ่าน</a>
 								<!-- <a class="dropdown-item" href="#">Another action</a> -->
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="logout.php">ออกจากระบบ</a>
+								<a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
 							</div>
 						</li>
 					<?php } else { ?>
@@ -89,12 +89,11 @@ if($_SESSION['username']==""){
 				&nbsp;
 			</div> -->
 			<div class="form-group float-right">
-				<a href="add_data.php" class="btn btn-outline-primary float-right">เพิ่มข้อมูล</a>
+				<a href="add_data.php" class="btn btn-outline-primary float-right"><i class="fas fa-plus-circle"></i> เพิ่มข้อมูล</a>
 				&nbsp;
 			</div>
-
 			<div class="form-group float-right">
-				<a href="Format.xls" class="btn btn-outline-warning float-right">ดาวโหลดฟอร์แมตเอกสาร</a>
+				<a href="Format.xls" class="btn btn-outline-success float-right"><i class="fas fa-file-excel"></i> ดาวโหลดฟอร์แมตเอกสาร</a>
 			</div>
 		</div>
 		<table id="myTable" class="table table-striped table-bordered" style="width:100%">
@@ -124,7 +123,7 @@ if($_SESSION['username']==""){
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">รายละเอียดข้อมูล</h5>
+					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-search"></i> รายละเอียดข้อมูล</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -175,6 +174,8 @@ if($_SESSION['username']==""){
 	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" charset="utf8" src="DataTables/media/js/dataTables.bootstrap4.min.js"></script>
 	<link rel="stylesheet" href="DataTables/media/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
 
 	<script>
 	$(document).ready(function() {
