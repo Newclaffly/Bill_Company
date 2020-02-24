@@ -75,6 +75,7 @@ Add additional notes about how to deploy this on a live system
 * [PHPEXCEL](http://phpexcel.codeplex.com) - Library Import Excel 
 * [Bootstrap4](https://getbootstrap.com/) - Library Template
 * [Phpspreadsheet](https://phpspreadsheet.readthedocs.io/en/latest/) - Library Import Excel 
+* [fontawesom](https://fontawesome.com/) - Icon 
 
 
 
