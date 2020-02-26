@@ -19,7 +19,16 @@ if($_SESSION['username']==""){
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<title>History</title>
+	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="DataTables/media/js/dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="DataTables/media/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	
 
 </head>
 
@@ -80,7 +89,7 @@ if($_SESSION['username']==""){
 	</nav>
 
 	<div class="container">
-		<div class="container">
+		<div class="container">	
 			<div class="mx-auto mt-5">
 				<h1 align="center">รายการบันทึกใบวางบิล</h1>
 			</div>
@@ -167,15 +176,6 @@ if($_SESSION['username']==""){
 			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="DataTables/media/js/dataTables.bootstrap4.min.js"></script>
-	<link rel="stylesheet" href="DataTables/media/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
 
 	<script>
 	$(document).ready(function() {
