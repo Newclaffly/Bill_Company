@@ -4,57 +4,83 @@ session_start();
 error_reporting(0);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ลืมรหัสผ่าน</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Change Password</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 mx-auto mt-5">
-                <div class="card">
-                    <form action="save_forgot.php" method="POST">
-                        <div class="card-header" style="text-align: center">
-                            หน้าจอลืมรหัสผ่าน
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="forgot_username" class="col-sm-3 col-form-label">ชื่อผู้ใช้</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="forgot_username" id="forgot_username" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="forgot_password" class="col-sm-3 col-form-label">รหัสผ่าน</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="forgot_password" id="forgot_password" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="password_confirm" class="col-sm-3 col-form-label">ยืนยันรหัสผ่าน</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password_confirm" id="password_confirm" required>
-                                </div>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="login_forgot.php"><b>Bill</b>Comapny</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
+
+                <form action="save_forgot.php" method="POST">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="forgot_username" id="forgot_username" required placeholder="Username">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                        <div class="card-footer text-center">
-                        <a href="history_member.php" class="btn btn-secondary float-Left">กลับหน้ารายการบันทึก</a>
-                            <input type="submit" name="submit" class="btn btn-success" value="เปลี่ยนรหัสผ่าน">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="forgot_password" id="forgot_password" required placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="password_confirm" id="password_confirm" required placeholder="Confirm Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" name="submit" class="btn btn-primary btn-block">Change password</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                <p class="mt-3 mb-1">
+                    <a href="login.php">Login</a>
+                </p>
             </div>
+            <!-- /.login-card-body -->
         </div>
     </div>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <!-- /.login-box -->
 </body>
 
 </html>

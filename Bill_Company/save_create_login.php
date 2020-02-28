@@ -1,15 +1,6 @@
 <?php
 session_start();
 error_reporting(0);
-if($_SESSION['username']==""){
-
-	echo "<br><center><h3><font color=\"#CC0099\"> คุณยังไม่ได้login กรุณาloginเข้าสู่ระบบก่อน</font></h3></center>";
-	
-	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
-	
-	exit();
-	
-	}
 date_default_timezone_set('Asia/Bangkok');
 ?>
 <!DOCTYPE html>

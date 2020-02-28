@@ -1,0 +1,120 @@
+<?php session_start(); 
+if($_SESSION['username']==""){
+
+	echo "<br><center><h3><font color=\"#CC0099\">คุณยังไม่ได้เข้าสู่ระบบ กรุณาเข้าสู่ระบบก่อน</font></h3></center>";
+	
+	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
+	
+	exit();
+	
+	}?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>index</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+<?php
+// echo 'Current PHP version: ' . phpversion();
+// error_reporting(0);
+
+?>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container">
+			<a class="navbar-brand" href="index.php"><i class="fas fa-home"></i> หน้าหลัก</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<?php
+			session_start();
+			if ($_SESSION['permis'] == "Supplier") {
+				?>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="history.php"><i class="fas fa-history"></i> ข้อมูลการวางบิล <span class="sr-only">(current)</span></a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li> -->
+					</ul>
+				<?php
+				} else {
+					?>
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="history_member.php"><i class="fas fa-history"></i> ข้อมูลการวางบิล <span class="sr-only">(current)</span></a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li> -->
+					</ul>
+				<?php } ?>
+				<ul class="navbar-nav ml-auto">
+					<?php if (isset($_SESSION['id'])) { ?>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-user"></i>  ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
+													$user = $_SESSION['username']; ?>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<!-- <a class="dropdown-item" href="#">Action</a> -->
+								<a class="dropdown-item" href="login_forgot.php"><i class="fas fa-key"></i> เปลี่ยนรหัสผ่าน</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+							</div>
+						</li>
+					<?php } else { ?>
+						<li class="nav-item">
+							<a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">เข้าสู่ระบบ</a>
+						</li>
+					<?php } ?>
+				</ul>
+				</div>
+		</div>
+	</nav>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1559694889-a09b2509c901?ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&h=400&q=80" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1 class="display-4">Welcome</h1>
+      <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nam velit quas explicabo vero, natus dicta accusantium quaerat, eos necessitatibus facere doloremque obcaecati, voluptatum hic provident illum quasi tenetur saepe.</p>
+    </div>
+
+  </div> 
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
+</body>
+
+</html>

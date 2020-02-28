@@ -11,10 +11,26 @@ error_reporting(0);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>เข้าสู่ระบบ</title>
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 </head>
 
-<body>
+<body class="hold-transition login-page">
   <?php
   session_start();
   include_once('connect.php');
@@ -51,44 +67,55 @@ error_reporting(0);
   }
   ?>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mx-auto mt-5">
-        <div class="card">
-          <form action="" method="POST">
-            <div class="card-header" style="text-align: center">
-              หน้าจอเข้าสู่ระบบ
-            </div>
-            <div class="card-body">
-              <div class="form-group row">
-                <label for="username" class="col-sm-3 col-form-label">Username</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" name="username" id="username" required>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="password" class="col-sm-3 col-form-label">Password</label>
-                <div class="col-sm-9">
-                  <input type="password" class="form-control" name="password" id="password" required>
-                  <br>
-                  <div class="float-right">
-                    <a href="login_forgot.php" class="float-right">ลืมรหัสผ่าน</a>
-                  </div>
-                </div>
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="login.php"><b>Bill</b>Company</a>
+    </div>
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form action="" method="POST">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="username" id="username" required placeholder="Username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
               </div>
             </div>
-            <div class="card-footer text-center">
-              <input type="submit" name="submit" class="btn btn-success" value="เข้าสู่ระบบ">
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="password" id="password" required placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
             </div>
-          </form>
-        </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Remember Me
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
+            </div>
+
+          </div>
+        </form>
+        <p class="mb-1">
+          <a href="login_forgot.php">I forgot my password</a>
+        </p>
+        <p class="mb-0">
+          <a href="login_create.php" class="text-center">Register a new membership</a>
+        </p>
       </div>
     </div>
   </div>
-
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <!-- /.login-box -->
 </body>
 
 </html>

@@ -1,120 +1,278 @@
-<?php session_start(); 
-if($_SESSION['username']==""){
+<?php session_start();
+error_reporting(0);
+$temp = $_SESSION['username'];
+$date_expired = $_SESSION['date_expired'];
+if ($_SESSION['username'] == "") {
 
-	echo "<br><center><h3><font color=\"#CC0099\">คุณยังไม่ได้เข้าสู่ระบบ กรุณาเข้าสู่ระบบก่อน</font></h3></center>";
-	
-	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
-	
+	//echo "<br><center><h3><font color=\"#CC0099\">คุณยังไม่ได้เข้าสู่ระบบ กรุณาเข้าสู่ระบบก่อน</font></h3></center>";
+
+	//echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"2;URL=login.php\">";
+
 	exit();
-	
-	}?>
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>index</title>
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Index Pages</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- DataTable -->
+	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.js"></script>
+	<script type="text/javascript" charset="utf8" src="DataTables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="DataTables/media/js/dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="DataTables/media/css/jquery.dataTables.min.css">
+	<!-- Bootstrap 4 -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="dist/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="dist/js/demo.js"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="dist/css/adminlte.min.css">
+	<!-- Google Font: Source Sans Pro -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+
 </head>
 
-<body>
-<?php
-// echo 'Current PHP version: ' . phpversion();
-// error_reporting(0);
-
-?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<div class="container">
-			<a class="navbar-brand" href="index.php"><i class="fas fa-home"></i> หน้าหลัก</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<?php
-			session_start();
-			if ($_SESSION['permis'] == "Supplier") {
+<body class="hold-transition sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+				</li>
+				<li class="nav-item d-none d-sm-inline-block">
+					<a href="index.php" class="nav-link">Home</a>
+				</li>
+				<?php
+				session_start();
+				if ($_SESSION['permis'] == "Supplier") {
 				?>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="history.php"><i class="fas fa-history"></i> ข้อมูลการวางบิล <span class="sr-only">(current)</span></a>
-						</li>
-						<!-- <li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li> -->
-					</ul>
+					<li class="nav-item d-none d-sm-inline-block">
+						<a href="history.php" class="nav-link">History Bill</a>
+					</li>
 				<?php
 				} else {
-					?>
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="history_member.php"><i class="fas fa-history"></i> ข้อมูลการวางบิล <span class="sr-only">(current)</span></a>
-						</li>
-						<!-- <li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li> -->
-					</ul>
-				<?php } ?>
-				<ul class="navbar-nav ml-auto">
-					<?php if (isset($_SESSION['id'])) { ?>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fas fa-user"></i>  ยินดีต้อนรับคุณ <?php echo $_SESSION['username'];
-													$user = $_SESSION['username']; ?>
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<!-- <a class="dropdown-item" href="#">Action</a> -->
-								<a class="dropdown-item" href="login_forgot.php"><i class="fas fa-key"></i> เปลี่ยนรหัสผ่าน</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
-							</div>
-						</li>
-					<?php } else { ?>
-						<li class="nav-item">
-							<a class="nav-link " href="login.php" tabindex="-1" aria-disabled="true">เข้าสู่ระบบ</a>
-						</li>
-					<?php } ?>
-				</ul>
+				?>
+					<li class="nav-item d-none d-sm-inline-block">
+						<a href="history_member.php" class="nav-link">History Bill</a>
+					</li>
+				<?php  } ?>
+
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-dark-primary elevation-4">
+			<!-- Brand Logo -->
+			<a href="index3.html" class="brand-link">
+				<img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+				<span class="brand-text font-weight-light">Bill Company</span>
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar user (optional) -->
+				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+					<div class="image">
+						<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+					</div>
+					<div class="info">
+						<a href="#" class="d-block"><?php echo  $temp ?></a>
+						<a href="#" class="d-block">Expired : <?php echo  $date_expired ?></a>
+						<a href="logout.php" class="d-block">Logout</a>
+					</div>
 				</div>
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+						<li class="nav-item has-treeview">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>
+									Manage
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="login_forgot.php" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Change Password</p>
+									</a>
+								</li>
+								<!-- <li class="nav-item">
+                                    <a href="../../index3.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dashboard v3</p>
+                                    </a>
+                                </li> -->
+							</ul>
+						</li>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Home Notification</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+								<li class="breadcrumb-item active">History Bill</li>
+							</ol>
+						</div>
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+
+				<!-- Default box -->
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title"></h3>
+
+						<div class="card-tools">
+							<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+								<i class="fas fa-minus"></i></button>
+							<button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+								<i class="fas fa-times"></i></button>
+						</div>
+					</div>
+					<div class="card-body">
+						<!-- Main content -->
+						<div class="content">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="card">
+											<div class="card-body">
+												<h5 class="card-title">Card title</h5>
+
+												<p class="card-text">
+													Some quick example text to build on the card title and make up the bulk of the card's
+													content.
+												</p>
+
+												<a href="#" class="card-link">Card link</a>
+												<a href="#" class="card-link">Another link</a>
+											</div>
+										</div>
+
+										<div class="card card-primary card-outline">
+											<div class="card-body">
+												<h5 class="card-title">Card title</h5>
+
+												<p class="card-text">
+													Some quick example text to build on the card title and make up the bulk of the card's
+													content.
+												</p>
+												<a href="#" class="card-link">Card link</a>
+												<a href="#" class="card-link">Another link</a>
+											</div>
+										</div><!-- /.card -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-lg-6">
+										<div class="card">
+											<div class="card-header">
+												<h5 class="m-0">Featured</h5>
+											</div>
+											<div class="card-body">
+												<h6 class="card-title">Special title treatment</h6>
+
+												<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+												<a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										</div>
+
+										<div class="card card-primary card-outline">
+											<div class="card-header">
+												<h5 class="m-0">Featured</h5>
+											</div>
+											<div class="card-body">
+												<h6 class="card-title">Special title treatment</h6>
+
+												<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+												<a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										</div>
+									</div>
+									<!-- /.col-md-6 -->
+								</div>
+								<!-- /.row -->
+							</div><!-- /.container-fluid -->
+						</div>
+						<!-- /.content -->
+					</div>
+					<!-- /.content-wrapper -->
+					<div class="container">
+
+					</div>
+					<!-- /.card-body -->
+					<div class="card-footer">
+						Footer
+					</div>
+					<!-- /.card-footer-->
+				</div>
+				<!-- /.card -->
+
+			</section>
+			<!-- /.content -->
 		</div>
-	</nav>
+		<!-- /.content-wrapper -->
 
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1559694889-a09b2509c901?ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&h=400&q=80" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+		<footer class="main-footer">
+			<div class="float-right d-none d-sm-block">
+				<b>Version</b> 3.0.2
+			</div>
+			<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+			reserved.
+		</footer>
 
-  <div class="jumbotron">
-    <div class="container text-center">
-      <h1 class="display-4">Welcome</h1>
-      <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nam velit quas explicabo vero, natus dicta accusantium quaerat, eos necessitatibus facere doloremque obcaecati, voluptatum hic provident illum quasi tenetur saepe.</p>
-    </div>
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
 
-  </div> 
 
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <link rel="stylesheet" href="fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
+
+	<script>
+
+	</script>
 </body>
 
 </html>
